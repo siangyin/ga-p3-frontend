@@ -40,19 +40,9 @@ const Home = () => {
 							</label>
 						</div>
 
-						<div className="flex items-center justify-between flex-wrap -mx-3 mb-2">
-							<button
-								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline"
-								type="button"
-							>
-								Sign Up
-							</button>
-							<button
-								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline"
-								type="button"
-							>
-							Login
-							</button>
+						<div class="card-actions">
+							<button class="btn  hover:btn-primary">Login</button>
+							<button class="btn  hover:btn-primary">Register</button>
 						</div>
 					</div>
 				</div>
