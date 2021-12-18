@@ -10,7 +10,6 @@
 ## Table of contents
 
 - [Introduction](#Introduction)
-- [Features](#Features)
 - [Visuals](#Visuals)
 - [Challenging part](#Challenging-part)
 - [Technologies](#Technologies)
@@ -20,7 +19,11 @@
 
 This is a pantry manager web app which easily help user to manage the list of item and track expiry date of your pantry inventory in kitchen. Eat smarter. Save money. Waste less.
 
-## 🚀 Features
+### MVP
+
+
+
+### 🚀 Features
 
 There are total # pages.
 
@@ -57,6 +60,8 @@ TeamGroupID: Number,
   - etc
 
 ### User Stories
+
+
 
 ## 🎨 Visuals
 
@@ -139,13 +144,39 @@ Item > Edit Group
 
 Project is created with:
 
+### Front-End
 - HTML
 - CSS
 - REACT
 - bla bla bla black sheeeep
 
+### Back-End
+- Node.js
+- bla bla bla black sheeeep
+
+## Setup
+
+To run this project, install it locally using npm:
+
+```
+$ git clone
+$ npm i
+$ npm start
+
+```
+
+
+## Contributors
+
+
+- Hakeym @hakeymmhd 
+- Weilun @Shoreasg 
+- SiangYin 
+
+
+
 ## Links
 
-### Inspirations and References
+### Inspirations and Important Resources
 
 [etc links](http://www.omdbapi.com/ "OMDB API")
