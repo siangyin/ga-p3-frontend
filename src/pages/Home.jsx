@@ -39,19 +39,20 @@ const Home = () => {
 								</a>
 							</label>
 						</div>
-						<div className="form-control mt-3">
-							<input
+
+						<div className="flex items-center justify-between flex-wrap -mx-3 mb-2">
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline"
 								type="button"
-								value="Login"
-								className="btn btn-primary"
-							></input>
-						</div>
-						<div className="form-control mt-3">
-							<input
+							>
+								Sign Up
+							</button>
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline"
 								type="button"
-								value="Register"
-								className="btn btn-primary"
-							></input>
+							>
+							Login
+							</button>
 						</div>
 					</div>
 				</div>
