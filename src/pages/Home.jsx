@@ -40,9 +40,9 @@ const Home = () => {
 							</label>
 						</div>
 
-						<div class="card-actions">
-							<button class="btn  hover:btn-primary">Login</button>
-							<button class="btn  hover:btn-primary">Register</button>
+						<div className="card-actions">
+							<button className="btn  hover:btn-primary">Login</button>
+							<button className="btn  hover:btn-primary">Register</button>
 						</div>
 					</div>
 				</div>
