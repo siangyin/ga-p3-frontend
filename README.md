@@ -62,17 +62,61 @@ TeamGroupID: Number,
 
 ### Wireframes
 
-![Home](/ReadmeRef/homepage.jpg)
 
-![Item](/ReadmeRef/showitem.jpg)
+<table><tr>
+ <td>
+  Landing page
+</td>
+ <td>
+ <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/homepage.jpg?raw=true" width="400"/>
+</td>
+ </tr>
+  <tr>
+ <td>
+ Item > Show Item
+</td>
+ <td>
+<img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/showitem.jpg?raw=true" width="400"/>
+</td>
+ </tr>
+  <tr>
+ <td>
+ Item > Create Item
+</td>
+ <td>
+ <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/createitem.jpg?raw=true" width="400"/>
+</td>
+ </tr>
+  <tr>
+ <td>
+Item > Show Group
+</td>
+ <td>
+ <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/showgroup.jpg?raw=true" width="400"/>
+</td>
+ </tr>
+  <tr>
+ <td>
+Item > Create Group
+</td>
+ <td>
+ <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/creategroup.jpg?raw=true" width="400"/>
 
-![Item](/ReadmeRef/createitem.jpg)
 
-![Group](/ReadmeRef/showgroup.jpg)
+</td>
+ </tr>
+  <tr>
+ <td>
+Item > Edit Group
+</td>
+ <td>
+  <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/editgroup.jpg?raw=true" width="400"/>
 
-![Group](/ReadmeRef/creategroup.jpg)
+</td>
+ </tr>
+   
+</table>
 
-![Group](/ReadmeRef/editgroup.jpg)
 
 ## Challenging part
 
