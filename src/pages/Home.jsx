@@ -12,8 +12,8 @@ const Home = () => {
 							<h1 className="text-5xl font-bold">Hello</h1>
 							<h2 className="text-3xl font-bold">Share your kitchen leh!</h2>
 							<p className="mb-5">
-								Share your kitchen leh! Manage your pantry inventory & track
-								food expiry. Eat smarter. Save money. Waste less.
+								Manage your pantry inventory & track food expiry. Eat smarter.
+								Save money. Waste less.
 							</p>
 						</div>
 					</div>
