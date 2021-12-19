@@ -1,51 +1,40 @@
 // import { useState, useEffect, useRef } from "react";
-
-import { FaSearch, FaHeart } from "react-icons/fa";
+import logo from "../assets/images/gap3-logo01.svg";
+import { FaBars } from "react-icons/fa";
 
 export default function NavBar() {
 	return (
-		<div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content border-solid">
-			<div className="flex-none px-2 mx-2">
-				<span className="text-lg font-bold">ShareUrKitchenLeh</span>
+		<nav className="flex flex-wrap items-center justify-between p-6">
+			<div className="flex items-center flex-shrink-0 mr-8">
+				<img src={logo} alt="logo" width="200px"></img>
 			</div>
-			<div className="flex-1 px-2 mx-2">
-				<div className="items-stretch hidden lg:flex">
-					<a
-						href="https://www.google.com/"
-						className="btn btn-ghost btn-sm rounded-btn"
-					>
-						My Items
-					</a>
-					<a
-						href="https://www.google.com/"
-						className="btn btn-ghost btn-sm rounded-btn"
-					>
-						New Item
-					</a>
-					<a
-						href="https://www.google.com/"
-						className="btn btn-ghost btn-sm rounded-btn"
-					>
-						My Groups
-					</a>
-					<a
-						href="https://www.google.com/"
-						className="btn btn-ghost btn-sm rounded-btn"
-					>
-						New Group
-					</a>
-				</div>
-			</div>
-			<div className="flex-none">
-				<button className="btn btn-square btn-ghost">
-					<FaHeart />
+
+			<div className="block sm:hidden">
+				<button className="flex items-center px-3 py-2 border rounded border-grey-400 hover:text-blue">
+					<FaBars />
 				</button>
 			</div>
-			<div className="flex-none">
-				<button className="btn btn-square btn-ghost">
-					<FaSearch />
+
+			<div className="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
+				<a
+					href="#responsive-header"
+					className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue mr-5"
+				>
+					Items
+				</a>
+				<a
+					href="#responsive-header"
+					className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue mr-5"
+				>
+					Collections
+				</a>
+				<button
+					href="#responsive-header"
+					className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue"
+				>
+					Logout
 				</button>
 			</div>
-		</div>
+		</nav>
 	);
 }
