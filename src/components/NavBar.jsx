@@ -1,5 +1,5 @@
 // import { useState, useEffect, useRef } from "react";
-// import { a } from "react-router-dom";
+
 import { FaSearch, FaHeart } from "react-icons/fa";
 
 export default function NavBar() {
