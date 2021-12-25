@@ -1,7 +1,8 @@
 import React from "react";
 import photo from "../assets/images/photo.svg";
 import AccountForm from "../components/AccountForm";
-const Home = () => {
+
+export default function NavBar(){
 	return (
 		<div className="hero min-h-screen bg-base-200 flex flex-wrap justify-center">
 			<div className="flex-col justify-center hero-content lg:flex-row md:w-1/2">
@@ -25,4 +26,3 @@ const Home = () => {
 	
 	);
 };
-export default Home;

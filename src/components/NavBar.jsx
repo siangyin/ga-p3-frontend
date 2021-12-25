@@ -1,4 +1,4 @@
-// import { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom';
 import logo from "../assets/images/gap3-logo01.svg";
 import { FaBars } from "react-icons/fa";
 
@@ -17,10 +17,10 @@ export default function NavBar() {
 
 			<div className="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
 				<a
-					href="#responsive-header"
+					
 					className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue mr-5"
 				>
-					Items
+					<Link to="Items">Items</Link>
 				</a>
 				<a
 					href="#responsive-header"
