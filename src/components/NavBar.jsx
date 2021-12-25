@@ -6,7 +6,7 @@ export default function NavBar() {
 	return (
 		<nav className="flex flex-wrap items-center justify-between p-6">
 			<div className="flex items-center flex-shrink-0 mr-8">
-				<img src={logo} alt="logo" width="200px"></img>
+				<Link to ="/"><img src={logo} alt="logo" width="200px"></img></Link>
 			</div>
 
 			<div className="block sm:hidden">
