@@ -7,7 +7,7 @@ export default function AccountForm() {
 
     const onSubmitLogin = async (data) => {
         try{
-            await axios.post("http://localhost:5000/login", 
+            await axios.post("https://kitchentracker.herokuapp.com/login", 
             { ...data }, 
             { withCredentials: true })
             .then(res => console.log(res.data))
@@ -22,7 +22,7 @@ export default function AccountForm() {
     const onRegisterLogin = async (data) =>
     {
         try{
-            await axios.post("http://localhost:5000/signup",
+            await axios.post("https://kitchentracker.herokuapp.com/signup",
             {...data},
             {withCredentials: true})
             .then(res => console.log(res.data))
