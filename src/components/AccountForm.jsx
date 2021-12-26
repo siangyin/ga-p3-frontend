@@ -5,20 +5,31 @@ import { useForm } from "react-hook-form"
 export default function AccountForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const onSubmitLogin = (data) => {
-        axios({
-            method: 'post',
-            url: "https://kitchentracker.herokuapp.com/login",
-            data: data
-        }).then(res => console.log(res.data)).catch(err => console.log(err))
+    const onSubmitLogin = async (data) => {
+        try{
+            await axios.post("http://localhost:5000/login", 
+            { ...data }, 
+            { withCredentials: true })
+            .then(res => console.log(res.data))
+        }catch(err)
+        {
+            console.log(err)
+        }
+     
     }
 
-    const onRegisterLogin = (data) => {
-        axios({
-            method: 'post',
-            url: "https://kitchentracker.herokuapp.com/signup",
-            data: data
-        }).then(res => console.log(res.data)).catch(err => console.log(err))
+
+    const onRegisterLogin = async (data) =>
+    {
+        try{
+            await axios.post("http://localhost:5000/signup",
+            {...data},
+            {withCredentials: true})
+            .then(res => console.log(res.data))
+        }catch(err)
+        {
+            console.log(err)
+        }
     }
 
 
