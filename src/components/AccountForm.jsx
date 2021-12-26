@@ -1,19 +1,25 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form"
+import { useNavigate } from 'react-router-dom';
 
 export default function AccountForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
+    let navigate = useNavigate()
 
     const onSubmitLogin = async (data) => {
         try{
-            await axios.post("https://kitchentracker.herokuapp.com/login", 
+            await axios.post("http://localhost:5000/login", 
             { ...data }, 
             { withCredentials: true })
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                navigate("/items")
+            })
         }catch(err)
         {
             console.log(err)
+            navigate("/")
         }
      
     }
@@ -22,13 +28,18 @@ export default function AccountForm() {
     const onRegisterLogin = async (data) =>
     {
         try{
-            await axios.post("https://kitchentracker.herokuapp.com/signup",
+            await axios.post("http://localhost:5000/signup",
             {...data},
             {withCredentials: true})
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                navigate("/items")
+            })
         }catch(err)
         {
+       
             console.log(err)
+            navigate("/")
         }
     }
 
