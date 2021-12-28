@@ -18,7 +18,9 @@ export default function NavBar() {
                 if(res.status===200)
 				{
 					console.log(res.data)
-					navigate(0)
+					navigate("/")
+					window.location.reload()
+					
 				}
 			
             })

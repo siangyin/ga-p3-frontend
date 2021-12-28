@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useForm } from "react-hook-form"
-import { useNavigate} from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 
 export default function AccountForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    let navigate = useNavigate()
     const userSession = useContext(AuthContext)
 
     const onSubmitLogin = async (data) => {
@@ -16,7 +14,7 @@ export default function AccountForm() {
             { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                navigate(0)
+                window.location.reload()
             })
         }catch(err)
         {
@@ -35,7 +33,7 @@ export default function AccountForm() {
             {withCredentials: true})
             .then(res => {
                 console.log(res.data)
-                navigate(0)
+                window.location.reload()
             })
         }catch(err)
         {
