@@ -9,7 +9,6 @@ import axios from "axios";
 export default function NavBar() {
 	const userSession = useContext(AuthContext)
 	let navigate = useNavigate()
-	console.log(userSession)
 	const onLogout = async (data) => {
         try{
             await axios.get("http://localhost:5000/logout", 

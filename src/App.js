@@ -9,6 +9,7 @@ import { AuthContext } from "./components/contexts/AuthContext";
 
 function App() {
 	const userSession = useContext(AuthContext)
+	console.log(userSession)
 	return (
 		<div className="App">
 			<NavBar />
