@@ -11,7 +11,7 @@ export default function NavBar() {
 	let navigate = useNavigate()
 	const onLogout = async (data) => {
         try{
-            await axios.get("http://localhost:5000/logout", 
+            await axios.delete("http://localhost:5000/logout", 
             { withCredentials: true })
             .then(res => {
                 if(res.status===200)
