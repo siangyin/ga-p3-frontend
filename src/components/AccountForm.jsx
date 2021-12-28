@@ -1,11 +1,13 @@
 import axios from "axios";
-import React from "react";
 import { useForm } from "react-hook-form"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './contexts/AuthContext';
 
 export default function AccountForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
     let navigate = useNavigate()
+    const userSession = useContext(AuthContext)
 
     const onSubmitLogin = async (data) => {
         try{
@@ -14,12 +16,12 @@ export default function AccountForm() {
             { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                navigate("/items")
+                navigate(0)
             })
         }catch(err)
         {
             console.log(err)
-            navigate("/")
+         
         }
      
     }
@@ -33,13 +35,11 @@ export default function AccountForm() {
             {withCredentials: true})
             .then(res => {
                 console.log(res.data)
-                navigate("/items")
+                navigate(0)
             })
         }catch(err)
         {
-       
             console.log(err)
-            navigate("/")
         }
     }
 
@@ -48,7 +48,7 @@ export default function AccountForm() {
     return (
 
         <div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
-            <div className="card-body">
+            <div className="card-body">{userSession ? `Welcome ${userSession.username}`:
                 <form onSubmit={e => e.preventDefault()}>
                     <div className="form-control">
                         <label className="label">
@@ -83,7 +83,7 @@ export default function AccountForm() {
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onSubmitLogin)}>Login</button>
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onRegisterLogin)}>Register</button>
                     </div>
-                </form>
+                </form>}
             </div>
         </div>
     )
