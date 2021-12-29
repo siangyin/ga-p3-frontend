@@ -1,10 +1,15 @@
+import AllResults from "../components/AllResults";
+import FilterMenu from "../components/FilterMenu";
+import SubHeader from "../components/SubHeader";
 
-
-export default function Items(){
+export default function Items() {
 	return (
-		<div className="hero min-h-screen bg-base-200 flex flex-wrap justify-center">
-            This is the item page
-		</div>
-	
+		<>
+			<SubHeader title="items" btn="New Item" />
+			<div className="flex flex-row mx-8">
+				<FilterMenu />
+				<AllResults />
+			</div>
+		</>
 	);
-};
+}

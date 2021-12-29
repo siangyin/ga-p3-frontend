@@ -36,23 +36,23 @@ export default function NavBar() {
 					</div>
 
 					<div className="block sm:hidden">
-						<button className="flex items-center px-3 py-2 border rounded border-grey-400 hover:text-blue">
+						<button className="flex items-center px-3 py-2 border rounded border-grey-400 hover:text-primary">
 							<FaBars />
 						</button>
 					</div>
 
 					<div className="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
-						<button className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue mr-5">
-							<Link to="Items">Items</Link>
+						<button className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary mr-5">
+							<Link to="items">Items</Link>
 						</button>
 						<button
 							href="#responsive-header"
-							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue mr-5"
+							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary mr-5"
 						>
-							<Link to="Collections">Collections</Link>
+							<Link to="collections">Collections</Link>
 						</button>
 						<button
-							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue"
+							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary"
 							onClick={() => onLogout()}
 						>
 							Logout
@@ -68,7 +68,7 @@ export default function NavBar() {
 					</div>
 
 					<div className="block sm:hidden">
-						<button className="flex items-center px-3 py-2 border rounded border-grey-400 hover:text-blue">
+						<button className="flex items-center px-3 py-2 border rounded border-grey-400 hover:text-primary">
 							<FaBars />
 						</button>
 					</div>
