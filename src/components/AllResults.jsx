@@ -1,4 +1,3 @@
-import { FaChevronLeft, FaChevronRight, FaPen, FaTrash } from "react-icons/fa";
 import Pagination from "./Pagination";
 import SglCard from "./SglCard";
 

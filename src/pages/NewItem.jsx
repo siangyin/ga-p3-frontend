@@ -13,34 +13,37 @@ const NewItem = () => {
 				<form className="form-control flex flex-wrap mt-6">
 					<input
 						type="text"
-						name="prodName"
+						name="name"
 						placeholder="Product Name"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>
 
 					<input
 						type="text"
-						name="prodBrand"
+						name="brand"
 						placeholder="Product Brand"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>
 
 					<input
 						type="date"
-						name="prodExpiryDate"
+						name="expiryDate"
 						className="input input-bordered mb-3  sm:w-1/2 w-full  place-self-center"
 					></input>
 
 					<input
 						type="number"
 						id="quantity"
-						name="QTY"
+						name="qty"
 						value="0"
 						min="0"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>
 
-					<select class="select select-bordered mb-3 sm:w-1/2 w-full place-self-center">
+					<select
+						className="select select-bordered mb-3 sm:w-1/2 w-full place-self-center"
+						name="grpName"
+					>
 						<option disabled="disabled" selected="selected">
 							Collection
 						</option>
@@ -51,7 +54,7 @@ const NewItem = () => {
 
 					<input
 						type="text"
-						name="prodIMG"
+						name="imgUrl"
 						placeholder="Product Image URL"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>

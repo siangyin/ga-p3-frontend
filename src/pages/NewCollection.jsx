@@ -21,7 +21,7 @@ const NewCollection = () => {
 
 					<input
 						type="text"
-						name="grpIMG"
+						name="imgUrl"
 						placeholder="Image URL"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>
