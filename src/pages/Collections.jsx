@@ -146,9 +146,9 @@ export default function Collections() {
 									</div>
 
 									<h4 className="mt-6 block font-medium text-gray-900">
-										ice-cream
+										Group-x
 									</h4>
-									<h4>QTY: 2</h4>
+									<h4>Members: 2</h4>
 								</a>
 								<div className="card-actions p-0 m-0">
 									<button className="btn btn-outline btn-square">
@@ -171,10 +171,10 @@ export default function Collections() {
 									></img>
 								</div>
 								<a href="#" className="mt-6 block font-medium text-gray-900">
-									Frozen Chicken Nuggets
+									Group-x
 								</a>
 								<p aria-hidden="true" className="mt-1">
-									Qty: 1
+									Member: 1
 								</p>
 							</div>
 
@@ -189,10 +189,10 @@ export default function Collections() {
 									></img>
 								</div>
 								<a href="#" className="mt-6 block font-medium text-gray-900">
-									NTUC FairPrice Ferrero Rocher Chocolate
+									Group-x
 								</a>
 								<p aria-hidden="true" className="mt-1">
-									Qty: 2
+									Members: 2
 								</p>
 							</div>
 
