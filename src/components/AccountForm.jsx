@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-import { FacebookLoginButton,TwitterLoginButton,GoogleLoginButton } from "react-social-login-buttons";
+import { FacebookLoginButton, TwitterLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 const Swal = require('sweetalert2')
 
 
@@ -75,6 +75,34 @@ export default function AccountForm() {
             })
     }
 
+
+    const onFacebookLogin = async () => {
+        window.open("http://localhost:5000/auth/facebook", "_self")
+        await Swal.fire({
+            icon: 'success',
+            title: 'Login Success!',
+            showConfirmButton: false
+        })
+    }
+
+    const onTwitterLogin = async () => {
+        window.open("http://localhost:5000/auth/twitter", "_self")
+        await Swal.fire({
+            icon: 'success',
+            title: 'Login Success!',
+            showConfirmButton: false
+        })
+    }
+
+    const onGoogleLogin = async () => {
+        window.open("http://localhost:5000/auth/google", "_self")
+        await Swal.fire({
+            icon: 'success',
+            title: 'Login Success!',
+            showConfirmButton: false
+        })
+    }
+
     return (
 
         <div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
@@ -118,9 +146,9 @@ export default function AccountForm() {
                     </div>
                     <div className="label-text text-center font-extrabold text-2xl">or</div>
                     <div className="flex flex-col">
-                    <div><GoogleLoginButton onClick={() => alert("Hello")} /></div>
-                    <div><FacebookLoginButton onClick={() => alert("Hello")} /></div>
-                    <div><TwitterLoginButton onClick={() => alert("Hello")} /></div>
+                        <div><GoogleLoginButton onClick={onGoogleLogin} /></div>
+                        <div><FacebookLoginButton onClick={onFacebookLogin} /></div>
+                        <div><TwitterLoginButton onClick={onTwitterLogin} /></div>
                     </div>
                 </form>}
             </div>
