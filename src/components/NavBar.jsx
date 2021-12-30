@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 export default function NavBar() {
 	const userSession = useContext(AuthContext)
 	let navigate = useNavigate()
-	const onLogout = async (data) => {
+	const onLogout = async () => {
 		try {
 			await axios.delete("http://localhost:5000/logout",
 				{ withCredentials: true })

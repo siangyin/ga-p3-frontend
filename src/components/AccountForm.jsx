@@ -3,11 +3,15 @@ import { useForm } from "react-hook-form"
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import { FacebookLoginButton,TwitterLoginButton,GoogleLoginButton } from "react-social-login-buttons";
+const Swal = require('sweetalert2')
 
 
 export default function AccountForm() {
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' })
     const userSession = useContext(AuthContext)
+    let navigate = useNavigate();
 
 
     const onSubmitLogin = async (data) => {
@@ -16,18 +20,15 @@ export default function AccountForm() {
             { ...data },
             { withCredentials: true })
             .then(res => {
-                toast.success(res.data.message, {
-                    position: "top-right",
-                    autoClose: false,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
-
-                setTimeout(() => window.location.reload(), 1000)
-
+                if (res.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success!',
+                        confirmButtonText: 'Click to continue'
+                    }).then(() => {
+                        navigate(0)
+                    })
+                }
             }).catch(err => {
                 if (err) {
                     toast(err.response.data.message, {
@@ -41,8 +42,6 @@ export default function AccountForm() {
                     })
                 }
             })
-
-
     }
 
 
@@ -52,17 +51,15 @@ export default function AccountForm() {
             { ...data },
             { withCredentials: true })
             .then(res => {
-                toast.success(res.data.message, {
-                    position: "top-right",
-                    autoClose: false,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
-
-                setTimeout(() => window.location.reload(), 1000)
+                if (res.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registered and login Successfully!',
+                        confirmButtonText: 'Click to continue'
+                    }).then(() => {
+                        navigate(0)
+                    })
+                }
             }).catch(err => {
                 if (err) {
                     toast(err.response.data.message, {
@@ -76,11 +73,7 @@ export default function AccountForm() {
                     })
                 }
             })
-
-
     }
-
-
 
     return (
 
@@ -106,7 +99,7 @@ export default function AccountForm() {
                         </label>
                         <input
                             type="password"
-                            placeholder="password"
+                            placeholder="Password"
                             className="input input-bordered"
                             {...register("password", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/ })}
                         />
@@ -119,9 +112,15 @@ export default function AccountForm() {
                             </a>
                         </label>
                     </div>
-                    <div className="card-actions">
+                    <div className="card-actions flex space-x-16 justify-center ">
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onSubmitLogin)}>Login</button>
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onRegisterLogin)}>Register</button>
+                    </div>
+                    <div className="label-text text-center font-extrabold text-2xl">or</div>
+                    <div className="flex flex-col">
+                    <div><GoogleLoginButton onClick={() => alert("Hello")} /></div>
+                    <div><FacebookLoginButton onClick={() => alert("Hello")} /></div>
+                    <div><TwitterLoginButton onClick={() => alert("Hello")} /></div>
                     </div>
                 </form>}
             </div>
