@@ -2,34 +2,44 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/images/gap3-logo01.svg";
 import { FaBars } from "react-icons/fa";
 import { useContext } from 'react';
-import { AuthContext } from './contexts/AuthContext';
-import { useNavigate} from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { toast } from 'react-toastify';
+
 
 export default function NavBar() {
 	const userSession = useContext(AuthContext)
 	let navigate = useNavigate()
 	const onLogout = async (data) => {
-        try{
-            await axios.delete("http://localhost:5000/logout", 
-            { withCredentials: true })
-            .then(res => {
-                if(res.status===200)
-				{
-					console.log(res.data)
-					navigate("/")
-					window.location.reload()
-					
-				}
-			
-            })
-        }catch(err)
-        {
-            console.log(err)
-         
-        }
-     
-    }
+		try {
+			await axios.delete("http://localhost:5000/logout",
+				{ withCredentials: true })
+				.then(res => {
+					if (res.status === 200) {
+						console.log(res.data)
+						navigate("/")
+						toast.success(res.data.message, {
+							position: "top-right",
+							autoClose: false,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: false,
+							draggable: false,
+							progress: undefined,
+						});
+
+						setTimeout(() => window.location.reload(), 1000)
+
+					}
+
+				})
+		} catch (err) {
+			console.log(err)
+
+		}
+
+	}
 
 	return (
 		<>
@@ -59,7 +69,7 @@ export default function NavBar() {
 					</button>
 					<button
 						className="block sm:inline-block sm:mt-0 text-3xl  hover:text-blue"
-						onClick={()=>onLogout()}
+						onClick={() => onLogout()}
 					>
 						Logout
 					</button>

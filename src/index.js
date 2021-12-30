@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthContextProvider from "./components/contexts/AuthContext";
+import AuthContextProvider from "./contexts/AuthContext";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
