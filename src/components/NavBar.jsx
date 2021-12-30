@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/images/gap3-logo01.svg";
 import { FaBars } from "react-icons/fa";
 import { useContext } from 'react';
-import { AuthContext } from './contexts/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { toast } from 'react-toastify';

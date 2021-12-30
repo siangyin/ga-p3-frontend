@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useContext } from 'react';
-import { AuthContext } from './contexts/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 
 
