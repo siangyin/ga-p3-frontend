@@ -103,6 +103,53 @@ export default function AccountForm() {
         })
     }
 
+    const onForgotPassword = async () => {
+        await Swal.fire({
+            title: "Enter your username",
+            input: "text",
+            showCancelButton: true,
+            confirmButtonText: "Reset",
+            preConfirm: async (searchUsername) => {
+                await axios.get(`http://localhost:5000/checkusername/${searchUsername}`,
+                    { withCredentials: true })
+                    .then(res => {
+                        if (res.data.message === "user found") {
+                            Swal.fire({
+                                title: "Enter your new password",
+                                input: "password",
+                                showCancelButton: true,
+                                confirmButtonText: "Confirm",
+                                preConfirm: async (newpassword) => {
+                                    if ((/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/).test(newpassword)) {
+                                        await axios.post("http://localhost:5000/setnewpassword",
+                                            {
+                                                username: searchUsername,
+                                                password: newpassword
+                                            },
+                                            { withCredentials: true }).then(res => {
+                                                console.log(res)
+                                            })
+                                    } else {
+                                        Swal.showValidationMessage("Password must have: Minimum eight characters, at least one letter, one number and one special character")
+                                    }
+                                }
+                            })
+                        }
+                        else if (res.data.message === "user not found") {
+                            Swal.fire({
+                                icon: 'error',
+                                title: res.data.message,
+                                showConfirmButton: true
+                            })
+                        }
+                    })
+
+
+            }
+        })
+
+    }
+
     return (
 
         <div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
@@ -135,7 +182,7 @@ export default function AccountForm() {
                         {errors.password && errors.password.type === "pattern" && <span className="text-pink text-xs italic">Password must have: Minimum eight characters, at least one letter, one number and one special character</span>}
 
                         <label className="label">
-                            <a href="#testing" className="label-text-alt">
+                            <a href="/#" className="label-text-alt" onClick={onForgotPassword}>
                                 Forgot password?
                             </a>
                         </label>
