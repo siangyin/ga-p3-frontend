@@ -2,8 +2,8 @@ import { FaPlus } from "react-icons/fa";
 
 const SubHeader = (props) => {
 	return (
-		<div className="flex flex-row mx-8">
-			<h1 className="text-2xl font-semibold text-primary w-1/2 capitalize">
+		<div className="flex flex-row m-5 justify-between">
+			<h1 className="text-2xl font-semibold text-primary capitalize">
 				my {props.title}
 			</h1>
 

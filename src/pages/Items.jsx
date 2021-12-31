@@ -6,7 +6,7 @@ export default function Items() {
 	return (
 		<>
 			<SubHeader title="items" btn="New Item" />
-			<div className="flex flex-row mx-8">
+			<div className="flex flex-row">
 				<FilterMenu />
 				<AllResults />
 			</div>

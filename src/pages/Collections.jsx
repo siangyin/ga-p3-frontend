@@ -1,12 +1,12 @@
 import AllResults from "../components/AllResults";
-import CollectionsSideBar from "../components/FilterMenu";
+import CollectionsSideBar from "../components/CollectionsSideBar";
 import SubHeader from "../components/SubHeader";
 
 export default function Collections() {
 	return (
 		<>
 			<SubHeader title="collections" btn="New Collection" />
-			<div className="flex flex-row mx-8">
+			<div className="flex flex-row">
 				<CollectionsSideBar />
 				<AllResults />
 			</div>
