@@ -21,68 +21,78 @@ const FilterMenu = (props) => {
 				<input
 					type="date"
 					value="2021-12-31"
-					id="id-date"
-					name="name-date"
-					className="rounded-md focus:border-primary-500 focus:bg-white focus:ring-0
+					id="fromdate"
+					name="fromdate"
+					className="rounded-md input input-bordered bg-base-100 my-2  focus:border-primary-500 focus:bg-white focus:ring-0
                   "
 				/>
 				<span className="text-center menu-title italic">to</span>
 				<input
 					type="date"
 					value="2021-12-31"
-					id="id-date"
-					name="name-date"
-					className="rounded-md focus:border-primary-500 focus:bg-white focus:ring-0
+					id="todate"
+					name="todate"
+					className="rounded-md input input-bordered bg-base-100 my-2  focus:border-primary-500 focus:bg-white focus:ring-0
                   "
 				/>
 			</form>
 
 			{/* sub groups filter button start*/}
 
-			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide">
+			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide space-y-2">
 				<p className="menu-title">
 					<span>Quantity</span>
 				</p>
 				<label className="inline-flex items-center">
-					<input type="checkbox" checked="" />
+					<input
+						type="checkbox"
+						checked=""
+						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+					></input>
 					<span className="ml-2">in-house</span>
 				</label>
 
 				<label className="inline-flex items-center">
-					<input type="checkbox" checked="" />
+					<input
+						type="checkbox"
+						checked=""
+						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+					></input>
 					<span className="ml-2">out-of-stock</span>
 				</label>
-			</form>
 
-			{/* sub groups filter button end */}
-
-			{/* sub groups filter button start*/}
-
-			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide">
 				<p className="menu-title">
 					<span>Collections</span>
 				</p>
 				<label className="inline-flex items-center">
-					<input type="checkbox" checked="" />
-					<span className="ml-2">Yippee-Personal</span>
+					<input
+						type="checkbox"
+						checked=""
+						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+					></input>
+					<span className="ml-2">Office</span>
 				</label>
 
 				<label className="inline-flex items-center">
-					<input type="checkbox" checked="" />
-					<span className="ml-2">SG-office</span>
+					<input
+						type="checkbox"
+						checked=""
+						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+					></input>
+					<span className="ml-2">House</span>
 				</label>
-			</form>
 
-			{/* sub groups filter button end */}
-			{/* sub groups filter button start*/}
-
-			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide">
+				{/* fav  */}
 				<p className="menu-title">
 					<span>Favourite</span>
 				</p>
 				<label className="inline-flex items-center">
-					<input type="checkbox" checked="" />
-					<span className="ml-2">Favourite list</span>
+					<input
+						type="checkbox"
+						checked=""
+						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+					></input>
+					<span className="ml-2">Favourite items</span>
 				</label>
 			</form>
 

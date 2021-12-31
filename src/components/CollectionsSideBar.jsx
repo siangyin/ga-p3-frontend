@@ -6,8 +6,8 @@ const CollectionsSideBar = () => {
 			<form className="relative">
 				<input
 					type="text"
-					placeholder="Search collections"
-					className="w-full input input-grey input-bordered bg-base-200"
+					placeholder="Search Collections"
+					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
 				></input>
 				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey">
 					<FaSearch />
@@ -16,23 +16,19 @@ const CollectionsSideBar = () => {
 
 			{/* sub groups filter button start*/}
 
-			<ul class="menu p-4 shadow-lg bg-base-100 rounded-box btn-wide">
-				<li class="menu-title">
-					<span>My Collections</span>
-				</li>
+			<article className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide space-y-1.5">
+				<p className="menu-title">
+					<span>Collections List</span>
+				</p>
 
-				<li className="hover:font-bold hover:text-primary">
-					<a>Item with icon</a>
-				</li>
+				<p class="font-medium text-gray-900 dark:border-gray-600 hover:text-primary">
+					House
+				</p>
 
-				<li className="hover:font-bold hover:text-primary">
-					<a>Item with icon</a>
-				</li>
-
-				<li className="hover:font-bold hover:text-primary">
-					<a>Item with icon</a>
-				</li>
-			</ul>
+				<p class="font-medium text-gray-900 dark:border-gray-600 hover:text-primary">
+					Office
+				</p>
+			</article>
 
 			{/* sub groups filter button end */}
 		</aside>
