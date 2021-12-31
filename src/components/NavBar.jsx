@@ -28,7 +28,7 @@ export default function NavBar() {
 	return (
 		<>
 			{userSession ? (
-				<nav className="flex flex-wrap items-center justify-between p-6">
+				<nav className="flex flex-wrap items-center justify-between bg-base-200 p-5 shadow-md">
 					<div className="flex items-center flex-shrink-0 mr-8">
 						<Link to="/">
 							<img src={logo} alt="logo" width="200px"></img>
@@ -42,17 +42,17 @@ export default function NavBar() {
 					</div>
 
 					<div className="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
-						<button className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary mr-5">
+						<button className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary mr-5">
 							<Link to="items">Items</Link>
 						</button>
 						<button
 							href="#responsive-header"
-							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary mr-5"
+							className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary mr-5"
 						>
 							<Link to="collections">Collections</Link>
 						</button>
 						<button
-							className="block sm:inline-block sm:mt-0 text-3xl  hover:text-primary"
+							className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary"
 							onClick={() => onLogout()}
 						>
 							Logout

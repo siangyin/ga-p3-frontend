@@ -21,13 +21,9 @@ const CollectionsSideBar = () => {
 					<span>Collections List</span>
 				</p>
 
-				<p class="font-medium text-gray-900 dark:border-gray-600 hover:text-primary">
-					House
-				</p>
+				<p class="hover:text-primary">House</p>
 
-				<p class="font-medium text-gray-900 dark:border-gray-600 hover:text-primary">
-					Office
-				</p>
+				<p class="hover:text-primary">Office</p>
 			</article>
 
 			{/* sub groups filter button end */}
