@@ -1,0 +1,1 @@
+export const APIurl = "http://sykl-api.herokuapp.com/api/v1";
