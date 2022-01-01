@@ -1,14 +1,13 @@
 import AllResults from "../components/AllResults";
-import FilterMenu from "../components/FilterMenu";
+import CollectionsSideBar from "../components/CollectionsSideBar";
 import SubHeader from "../components/SubHeader";
 
-
-export default function Items() {
+export default function Collections() {
 	return (
 		<>
-			<SubHeader title="item" />
+			<SubHeader title="collection"/>
 			<div className="flex flex-row">
-				<FilterMenu />
+				<CollectionsSideBar />
 				<AllResults />
 			</div>
 		</>
