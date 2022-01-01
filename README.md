@@ -2,9 +2,9 @@
 
 [Web App - Demo Links](https://)
 
-[Front Links](https://)
+[Front Repo](https://github.com/siangyin/ga-p3-frontend)
 
-[Backend Links](https://)
+[Backend Repo](https://github.com/Shoreasg/ShareYourKitchenLeh_Backend)
 
 
 ## Table of contents
