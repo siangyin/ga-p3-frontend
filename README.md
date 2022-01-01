@@ -27,13 +27,24 @@ This is a pantry manager web app which easily help user to manage the list of it
 
 There are total # pages.
 
-- **Home** (/browse)
+- **Home** (landing page)
 
-  - User login/logout
-  - .....
+  - New user sign up : option with manual sign up form submission or with social media
+  - Existing user login
+  - Existing user logout
 
-- **Item** (/search)
-  - etc
+- **Collections** (aka groups/category)
+  - ALl new account creation will auto generate one personal collection for new user.
+  - View all collection which user owned and invited. 
+  - Collection owner able to invite other user as member and edit collection detail.
+  - All existing user can create new collection.
+
+- **Items** 
+  - User can create new item and save in collection of choice, which allow it's member to view and edit the item.
+  - User can view all items created.
+  - User can view all items which are saved in each shared collection.
+  - User can edit it's own item and item in each shared collection.
+
 
 ```javascript
 // itemOBJ
@@ -52,12 +63,6 @@ TeamGroupID: Number,
 }
 ```
 
-- **Item** (/genre)
-
-  - etc
-
-- **Opt: Recipe** (/detail)
-  - etc
 
 ### User Stories
 
