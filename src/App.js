@@ -7,9 +7,11 @@ import Collections from "./pages/Collections";
 import NewCollection from "./pages/NewCollection";
 import NewItem from "./pages/NewItem";
 import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "./components/contexts/AuthContext";
+import { AuthContext } from "./contexts/AuthContext";
 import { APIurl } from "./helper/API";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	const userSession = useContext(AuthContext);
@@ -32,10 +34,11 @@ function App() {
 	// getUser(`https://sykl-api.herokuapp.com/api/v1/members?search=YippeeYaya`);
 	// console.log(currentUser);
 	// useEffect(() => {
-		
+
 	// }, [currentUser]);
 	return (
 		<div className="App">
+			<ToastContainer />
 			<NavBar />
 			<Routes>
 				{userSession ? (

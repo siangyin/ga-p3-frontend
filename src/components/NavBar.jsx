@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/gap3-logo01.svg";
 import { FaBars } from "react-icons/fa";
 import { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function NavBar() {
 	const userSession = useContext(AuthContext);
@@ -17,7 +18,17 @@ export default function NavBar() {
 					if (res.status === 200) {
 						console.log(res.data);
 						navigate("/");
-						window.location.reload();
+						toast.success(res.data.message, {
+							position: "top-right",
+							autoClose: false,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: false,
+							draggable: false,
+							progress: undefined,
+						});
+
+						setTimeout(() => window.location.reload(), 1000);
 					}
 				});
 		} catch (err) {
