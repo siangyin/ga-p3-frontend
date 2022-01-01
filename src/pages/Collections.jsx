@@ -5,7 +5,7 @@ import SubHeader from "../components/SubHeader";
 export default function Collections() {
 	return (
 		<>
-			<SubHeader title="collections" btn="New Collection" />
+			<SubHeader title="collection"/>
 			<div className="flex flex-row">
 				<CollectionsSideBar />
 				<AllResults />
