@@ -17,30 +17,12 @@ function App() {
 	const userSession = useContext(AuthContext);
 	console.log(userSession);
 
-	const [currentUser, setCurrentUser] = useState(userSession);
-	// username: userSession;
-
-	// const getUser = async (url) => {
-	// 	try {
-	// 		await userSession.username;
-	// 		const res = await axios.get(url);
-	// 		console.log(res);
-	// 		setCurrentUser(res.data);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
-
-	// getUser(`https://sykl-api.herokuapp.com/api/v1/members?search=YippeeYaya`);
-	// console.log(currentUser);
-	// useEffect(() => {
-
-	// }, [currentUser]);
 	return (
 		<div className="App">
 			<ToastContainer />
 			<NavBar />
 			<Routes>
+			<Route path="/" element={<Home />} />
 				{userSession ? (
 					<>
 						<Route path="/" element={<Home />} />
@@ -50,13 +32,13 @@ function App() {
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
+						<Route path="/logout" element={<Home />} />
 					</>
 				) : (
 					<>
 					<Route path="*" element={<Navigate to="/"/>}/>
 					</>
 				)}
-				<Route path="/logout" element={<Home />} />
 			</Routes>
 			<Footer />
 		</div>
