@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Navigate } from "react-router-dom"
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -53,7 +53,7 @@ function App() {
 					</>
 				) : (
 					<>
-						<Route path="/" element={<Home />} />
+					<Route path="*" element={<Navigate to="/"/>}/>
 					</>
 				)}
 				<Route path="/logout" element={<Home />} />
