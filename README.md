@@ -9,13 +9,13 @@
 
 ## 🌼 Introduction
 
-This is a pantry manager web app which easily help user to manage the list of item and track expiry date of your pantry inventory in kitchen. Eat smarter. Save money. Waste less.
+Pantry Manager that helps you keep track of what is in your pantry at all times.
 
 ### MVP
 
 
 ## 🚀 Features:
-- Pantry Manager that helps you keep track of what is in your pantry at all times.
+- Online pantry manager help user to manage the list of item in your kitchen aiming for less wastage, save money, share food.
 - Stop wasting food: The average family of four wastes 25% of their food each year.
 - Food record expiry date: tells you when your food is going to expire so that you can use it before it's expiring.
 - Photo saving: input the img url of the item for quick reference in viewing your on-hand item easily.
