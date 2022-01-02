@@ -76,29 +76,29 @@ export default function AccountForm() {
     }
 
 
-    const onFacebookLogin = async () => {
+    const onFacebookLogin =  () => {
         window.open("http://localhost:5000/auth/facebook", "_self")
-        await Swal.fire({
-            icon: 'success',
-            title: 'Login Success!',
+         Swal.fire({
+            icon: 'info',
+            title: 'Redirecting you to login!',
             showConfirmButton: false
         })
     }
 
-    const onTwitterLogin = async () => {
+    const onTwitterLogin =  () => {
         window.open("http://localhost:5000/auth/twitter", "_self")
-        await Swal.fire({
-            icon: 'success',
-            title: 'Login Success!',
+         Swal.fire({
+            icon: 'info',
+            title: 'Redirecting you to login!',
             showConfirmButton: false
         })
     }
 
-    const onGoogleLogin = async () => {
+    const onGoogleLogin =  () => {
         window.open("http://localhost:5000/auth/google", "_self")
-        await Swal.fire({
+         Swal.fire({
             icon: 'success',
-            title: 'Login Success!',
+            title: 'Redirecting you to login!',
             showConfirmButton: false
         })
     }
