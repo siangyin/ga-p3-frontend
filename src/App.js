@@ -6,12 +6,13 @@ import Items from "./pages/Items";
 import Collections from "./pages/Collections";
 import NewCollection from "./pages/NewCollection";
 import NewItem from "./pages/NewItem";
-import { useContext, useState, useEffect } from "react";
+import { useContext} from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { APIurl } from "./helper/API";
-import axios from "axios";
+// import { APIurl } from "./helper/API";
+// import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
 	const userSession = useContext(AuthContext);
@@ -37,6 +38,7 @@ function App() {
 				) : (
 					<>
 					<Route path="*" element={<Navigate to="/"/>}/>
+					<Route path="/reset/:token" element={<ResetPassword/>}/>
 					</>
 				)}
 			</Routes>

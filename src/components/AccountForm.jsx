@@ -46,57 +46,71 @@ export default function AccountForm() {
 
 
     const onRegisterLogin = async (data) => {
+        const { value: email } = await Swal.fire({
+            title: 'Register your Email Address',
+            input: 'email',
+            inputLabel: 'Email address',
+            inputPlaceholder: 'Enter your email address'
+        })
 
-        await axios.post("http://localhost:5000/signup",
-            { ...data },
-            { withCredentials: true })
-            .then(res => {
-                if (res.status === 200) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Registered and login Successfully!',
-                        confirmButtonText: 'Click to continue'
-                    }).then(() => {
-                        navigate(0)
-                    })
-                }
-            }).catch(err => {
-                if (err) {
-                    toast(err.response.data.message, {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: false,
-                        pauseOnHover: false,
-                        draggable: false,
-                        progress: undefined,
-                    })
-                }
-            })
+        if (email) {
+            await axios.post("http://localhost:5000/signup",
+                {
+                    username: data.username,
+                    password: data.password,
+                    email: email
+                },
+                { withCredentials: true })
+                .then(res => {
+                    if (res.status === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registered and login Successfully!',
+                            confirmButtonText: 'Click to continue'
+                        }).then(() => {
+                            navigate(0)
+                        })
+                    }
+                }).catch(err => {
+                    if (err) {
+                        toast(err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: false,
+                            draggable: false,
+                            progress: undefined,
+                        })
+                    }
+                })
+        }
+
+
     }
 
 
-    const onFacebookLogin =  () => {
+    const onFacebookLogin = () => {
         window.open("http://localhost:5000/auth/facebook", "_self")
-         Swal.fire({
+        Swal.fire({
             icon: 'info',
             title: 'Redirecting you to login!',
             showConfirmButton: false
         })
     }
 
-    const onTwitterLogin =  () => {
+    const onTwitterLogin = () => {
         window.open("http://localhost:5000/auth/twitter", "_self")
-         Swal.fire({
+        Swal.fire({
             icon: 'info',
             title: 'Redirecting you to login!',
             showConfirmButton: false
         })
     }
 
-    const onGoogleLogin =  () => {
+    const onGoogleLogin = () => {
         window.open("http://localhost:5000/auth/google", "_self")
-         Swal.fire({
+        Swal.fire({
             icon: 'success',
             title: 'Redirecting you to login!',
             showConfirmButton: false
@@ -105,37 +119,22 @@ export default function AccountForm() {
 
     const onForgotPassword = async () => {
         await Swal.fire({
-            title: "Enter your username",
-            input: "text",
+            title: "Enter your email",
+            input: "email",
             showCancelButton: true,
             confirmButtonText: "Reset",
-            preConfirm: async (searchUsername) => {
-                await axios.get(`http://localhost:5000/checkusername/${searchUsername}`,
+            preConfirm: async (searchEmail) => {
+                await axios.post(`http://localhost:5000/checkemail/${searchEmail}`,
                     { withCredentials: true })
                     .then(res => {
-                        if (res.data.message === "user found") {
+                        if (res.data.message === "Email found") {
                             Swal.fire({
-                                title: "Enter your new password",
-                                input: "password",
-                                showCancelButton: true,
-                                confirmButtonText: "Confirm",
-                                preConfirm: async (newpassword) => {
-                                    if ((/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/).test(newpassword)) {
-                                        await axios.post("http://localhost:5000/setnewpassword",
-                                            {
-                                                username: searchUsername,
-                                                password: newpassword
-                                            },
-                                            { withCredentials: true }).then(res => {
-                                                console.log(res)
-                                            })
-                                    } else {
-                                        Swal.showValidationMessage("Password must have: Minimum eight characters, at least one letter, one number and one special character")
-                                    }
-                                }
+                                icon: 'success',
+                                title: "Please check your email to reset your password",
+                                confirmButtonText: "OK",
                             })
                         }
-                        else if (res.data.message === "user not found") {
+                        else if (res.data.message === "Email not found") {
                             Swal.fire({
                                 icon: 'error',
                                 title: res.data.message,
@@ -180,13 +179,12 @@ export default function AccountForm() {
                         />
                         {errors.password && errors.password.type === "required" && <span className="text-pink text-xs italic">This field is required</span>}
                         {errors.password && errors.password.type === "pattern" && <span className="text-pink text-xs italic">Password must have: Minimum eight characters, at least one letter, one number and one special character</span>}
-
-                        <label className="label">
-                            <a href="/#" className="label-text-alt" onClick={onForgotPassword}>
-                                Forgot password?
-                            </a>
-                        </label>
                     </div>
+                    <label className="label">
+                        <a href="/#" className="label-text-alt" onClick={onForgotPassword}>
+                            Forgot password?
+                        </a>
+                    </label>
                     <div className="card-actions flex space-x-16 justify-center ">
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onSubmitLogin)}>Login</button>
                         <button className="btn  hover:btn-primary" onClick={handleSubmit(onRegisterLogin)}>Register</button>
