@@ -24,7 +24,9 @@ export default function AccountForm() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Login Success!',
-                        confirmButtonText: 'Click to continue'
+                        confirmButtonText: 'Click to continue',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
                     }).then(() => {
                         navigate(0)
                     })
@@ -50,7 +52,9 @@ export default function AccountForm() {
             title: 'Register your Email Address',
             input: 'email',
             inputLabel: 'Email address',
-            inputPlaceholder: 'Enter your email address'
+            inputPlaceholder: 'Enter your email address',
+            allowOutsideClick: false,
+            allowEscapeKey: false
         })
 
         if (email) {
@@ -66,7 +70,9 @@ export default function AccountForm() {
                         Swal.fire({
                             icon: 'success',
                             title: 'Registered and login Successfully!',
-                            confirmButtonText: 'Click to continue'
+                            confirmButtonText: 'Click to continue',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
                         }).then(() => {
                             navigate(0)
                         })
@@ -124,7 +130,8 @@ export default function AccountForm() {
             showCancelButton: true,
             confirmButtonText: "Reset",
             preConfirm: async (searchEmail) => {
-                await axios.post(`http://localhost:5000/checkemail/${searchEmail}`,
+                await axios.post(`http://localhost:5000/checkemail/`,
+                    { email: searchEmail },
                     { withCredentials: true })
                     .then(res => {
                         if (res.data.message === "Email found") {

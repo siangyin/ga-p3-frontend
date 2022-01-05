@@ -16,7 +16,11 @@ export default function ResetPassword() {
             title: "Enter your new password",
             input: "password",
             confirmButtonText: "Reset",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
             preConfirm: async (password) => {
+                if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password))
+                {
                 await axios.post(`http://localhost:5000/resetpassword`,
                     {
                         resetToken: token,
@@ -44,6 +48,10 @@ export default function ResetPassword() {
                         }
                     })
             }
+            else{
+                Swal.showValidationMessage("Password must have: Minimum eight characters, at least one letter, one number and one special character")
+            }
+        }
 
         })
     );
