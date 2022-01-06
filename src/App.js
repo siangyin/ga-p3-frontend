@@ -34,6 +34,7 @@ function App() {
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
 						<Route path="/logout" element={<Home />} />
+						<Route path="*" element={<Navigate to="/"/>}/>
 					</>
 				) : (
 					<>
