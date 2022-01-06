@@ -16,7 +16,7 @@ export default function ResetPassword() {
     useEffect(() => {
         try {
             axios
-                .get(`http://localhost:5000/checktoken/${token}`)
+                .get(`${process.env.REACT_APP_DEV_BACKEND_URL}/checktoken/${token}`)
                 .then((res) => {
                     if (res.data.message === "Valid token") {
                         setValid(true);
@@ -39,7 +39,7 @@ export default function ResetPassword() {
             allowEscapeKey: false,
             preConfirm: async (password) => {
                 if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-                    await axios.post(`http://localhost:5000/resetpassword`,
+                    await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/resetpassword`,
                         {
                             resetToken: token,
                             password: password

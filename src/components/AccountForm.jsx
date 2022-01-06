@@ -13,10 +13,9 @@ export default function AccountForm() {
     const userSession = useContext(AuthContext)
     let navigate = useNavigate();
 
-
     const onSubmitLogin = async (data) => {
 
-        await axios.post("http://localhost:5000/login",
+        await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/login`,
             { ...data },
             { withCredentials: true })
             .then(res => {
@@ -58,7 +57,7 @@ export default function AccountForm() {
         })
 
         if (email) {
-            await axios.post("http://localhost:5000/signup",
+            await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/signup`,
                 {
                     username: data.username,
                     password: data.password,
@@ -97,7 +96,7 @@ export default function AccountForm() {
 
 
     const onFacebookLogin = () => {
-        window.open("http://localhost:5000/auth/facebook", "_self")
+        window.open(`${process.env.REACT_APP_DEV_BACKEND_URL}/auth/facebook`, "_self")
         Swal.fire({
             icon: 'info',
             title: 'Redirecting you to login!',
@@ -106,7 +105,7 @@ export default function AccountForm() {
     }
 
     const onTwitterLogin = () => {
-        window.open("http://localhost:5000/auth/twitter", "_self")
+        window.open(`${process.env.REACT_APP_DEV_BACKEND_URL}/auth/twitter`, "_self")
         Swal.fire({
             icon: 'info',
             title: 'Redirecting you to login!',
@@ -115,7 +114,7 @@ export default function AccountForm() {
     }
 
     const onGoogleLogin = () => {
-        window.open("http://localhost:5000/auth/google", "_self")
+        window.open(`${process.env.REACT_APP_DEV_BACKEND_URL}/auth/google`, "_self")
         Swal.fire({
             icon: 'success',
             title: 'Redirecting you to login!',
@@ -130,7 +129,7 @@ export default function AccountForm() {
             showCancelButton: true,
             confirmButtonText: "Reset",
             preConfirm: async (searchEmail) => {
-                await axios.post(`http://localhost:5000/checkemail/`,
+                await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/checkemail/`,
                     { email: searchEmail },
                     { withCredentials: true })
                     .then(res => {
