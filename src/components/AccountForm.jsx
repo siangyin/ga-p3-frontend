@@ -47,22 +47,6 @@ export default function AccountForm() {
 			});
 	};
 
-	const onRegisterLogin = async (data) => {
-		try {
-			await axios
-				.post(
-					"http://localhost:5000/signup",
-					{ ...data },
-					{ withCredentials: true }
-				)
-				.then((res) => {
-					console.log(res.data);
-					window.location.reload();
-				});
-		} catch (err) {
-			console.log(err);
-		}
-	};
 
 	const onRegisterLogin = async (data) => {
 		await axios

@@ -9,7 +9,7 @@ const SglCard = (props) => {
 
 	return (
 		<div className="group relative text-sm">
-			<input type="checkbox" checked="" class="checkbox absolute"></input>
+			<input type="checkbox" checked="" className="checkbox absolute"></input>
 			<div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
 				<img
 					src="https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/11576937_XL1_20210118.jpg"

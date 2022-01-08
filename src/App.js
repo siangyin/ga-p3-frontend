@@ -17,25 +17,24 @@ function App() {
 	const userSession = useContext(AuthContext);
 	console.log(userSession);
 
-	const [currentUser, setCurrentUser] = useState(userSession);
+	const [currentUser, setCurrentUser] = useState();
 	// username: userSession;
 
-	// const getUser = async (url) => {
-	// 	try {
-	// 		await userSession.username;
-	// 		const res = await axios.get(url);
-	// 		console.log(res);
-	// 		setCurrentUser(res.data);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
+	useEffect(() => {
+		const getUser = async () => {
+			try {
+				await userSession.username;
+				const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
+				const res = await axios.get(url);
+				setCurrentUser(res.data);
+				console.log(currentUser);
+			} catch (err) {
+				console.log(err);
+			}
+		};
 
-	// getUser(`https://sykl-api.herokuapp.com/api/v1/members?search=YippeeYaya`);
-	// console.log(currentUser);
-	// useEffect(() => {
-
-	// }, [currentUser]);
+		getUser();
+	}, []);
 	return (
 		<div className="App">
 			<ToastContainer />

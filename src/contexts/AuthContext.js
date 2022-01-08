@@ -11,6 +11,7 @@ const AuthContextProvider = (props) => {
 				.get("http://localhost:5000/getlogin", { withCredentials: true })
 				.then((res) => {
 					setUserSession(res.data);
+					localStorage.setItem("userId", res.data._id);
 				});
 		} catch (err) {
 			console.log(err);
