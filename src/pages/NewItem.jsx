@@ -59,25 +59,31 @@ const NewItem = () => {
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
 					></input>
 
-					<div class="p-6 place-self-center">
-						<div class="form-control">
-							<label class="cursor-pointer label">
-								<span class="label-text mr-5">Add to Favourite List</span>
-								<input type="checkbox" checked="checked" class="toggle"></input>
+					<div className="p-6 place-self-center">
+						<div className="form-control">
+							<label className="cursor-pointer label">
+								<span className="label-text mr-5">Add to Favourite List</span>
+								<input
+									type="checkbox"
+									checked="checked"
+									className="toggle"
+								></input>
 							</label>
 						</div>
 					</div>
 
-					<div class="flex flex-row place-self-center space-x-4">
-						<button class="btn btn-outline btn-primary">
+					<div className="flex flex-row place-self-center space-x-4">
+						<button className="btn btn-outline btn-primary">
 							Save & go to List
 						</button>
 
-						<button class="btn btn-outline btn-primary">
+						<button className="btn btn-outline btn-primary">
 							Save & Add another
 						</button>
 
-						<button class="btn btn-outline btn-primary">Clear/ Delete</button>
+						<button className="btn btn-outline btn-primary">
+							Clear/ Delete
+						</button>
 					</div>
 				</form>
 			</div>
