@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Navigate } from "react-router-dom"
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
 	const userSession = useContext(AuthContext);
 	console.log(userSession);
+
 
 	const [currentUser, setCurrentUser] = useState();
 	// username: userSession;
@@ -35,11 +36,14 @@ function App() {
 
 		getUser();
 	}, []);
+
+
 	return (
 		<div className="App">
 			<ToastContainer />
 			<NavBar />
 			<Routes>
+			<Route path="/" element={<Home />} />
 				{userSession ? (
 					<>
 						<Route path="/" element={<Home />} />
@@ -49,13 +53,13 @@ function App() {
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
+						<Route path="/logout" element={<Home />} />
 					</>
 				) : (
 					<>
-						<Route path="/" element={<Home />} />
+					<Route path="*" element={<Navigate to="/"/>}/>
 					</>
 				)}
-				<Route path="/logout" element={<Home />} />
 			</Routes>
 			<Footer />
 		</div>
