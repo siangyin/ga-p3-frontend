@@ -98,14 +98,7 @@ const NewItem = () => {
 						draggable: true,
 						progress: undefined,
 					});
-					reset({
-						name: "",
-						brand: "",
-						expiryDate: "",
-						fav: false,
-						imgUrl: "",
-						qty: ""
-					})
+					reset()
 				}
 
 			}).catch(err => {
@@ -124,15 +117,7 @@ const NewItem = () => {
 	}
 
 	const onClear = async () => {
-
-		reset({
-			name: "",
-			brand: "",
-			expiryDate: "",
-			fav: false,
-			imgUrl: "",
-			qty: ""
-		})
+		reset()
 	}
 
 
