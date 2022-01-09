@@ -1,7 +1,31 @@
 import React from "react";
+import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 import SubHeader from "../components/SubHeader";
+import axios from "axios";
 
 const NewItem = () => {
+
+
+	const getCollecitons = async()=>
+	{
+		await axios.get(`http://localhost:5000/api/v1/groups?ownerID=${localStorage.getItem('userId')}`,{withCredentials:true})
+		.then(res=>
+			{
+				let listOfCollections = res.data
+				console.log(listOfCollections)
+				listOfCollections.data.map((data,index)=>
+				{	
+					console.log(data.grpName)
+					return <option>{data.grpName}</option>
+				})
+			})
+	}
+
+	getCollecitons()
+
+	const { register, handleSubmit } = useForm()
 	return (
 		<>
 			<div className="card-body">
@@ -10,34 +34,34 @@ const NewItem = () => {
 						New Item
 					</h1>
 				</div>
-				<form className="form-control flex flex-wrap mt-6">
+				<form className="form-control flex flex-wrap mt-6" onSubmit={e => e.preventDefault()}>
 					<input
 						type="text"
-						name="name"
 						placeholder="Product Name"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+						{...register('name',{required:true})}
 					></input>
 
 					<input
 						type="text"
-						name="brand"
 						placeholder="Product Brand"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+						{...register('brand',{required:true})}
 					></input>
 
 					<input
 						type="date"
-						name="expiryDate"
 						className="input input-bordered mb-3  sm:w-1/2 w-full  place-self-center"
+						{...register('expiryDate',{required:true})}
 					></input>
 
 					<input
 						type="number"
 						id="quantity"
-						name="qty"
 						value="0"
 						min="0"
 						className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+						{...register('qty')}
 					></input>
 
 					<select
@@ -47,9 +71,7 @@ const NewItem = () => {
 						<option disabled="disabled" selected="selected">
 							Collection
 						</option>
-						<option>Personal</option>
-						<option>Home</option>
-						<option>Office</option>
+						{getCollecitons}
 					</select>
 
 					<input
