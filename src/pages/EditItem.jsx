@@ -34,8 +34,6 @@ const EditItem = () => {
         getSelectedItemData()
     }, [reset]);
 
-    console.log(getItemDetails)
-
     let expiryDate = moment(getItemDetails.expiryDate).format('YYYY-MM-DD')
 
     const options = listCollections.map((data, index) => {
@@ -86,53 +84,6 @@ const EditItem = () => {
 
 
     }
-
-    const onAddAnother = async (data) => {
-        await axios.post(`http://localhost:5000/api/v1/items/`, {
-            name: data.name,
-            brand: data.brand,
-            expiryDate: data.expiryDate,
-            fav: data.fav,
-            imgUrl: data.imgUrl,
-            qty: data.qty,
-            grpID: selectedCollection,
-            createdBy: localStorage.getItem('userId')
-
-        }, { withCredentials: true })
-            .then(res => {
-                if (res.status === 200) {
-                    toast.success('Successfully created!', {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                    reset()
-                }
-
-            }).catch(err => {
-                toast.error(err.response.data.message, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-            })
-
-
-    }
-
-    const onClear = async () => {
-        reset()
-    }
-
-
 
     return (
         <>
@@ -217,14 +168,6 @@ const EditItem = () => {
                 <div className="flex flex-row place-self-center space-x-4">
                     <button className="btn btn-outline btn-primary" onClick={handleSubmit(onCreate)}>
                         Save & go to List
-                    </button>
-
-                    <button className="btn btn-outline btn-primary" onClick={handleSubmit(onAddAnother)}>
-                        Save & Add another
-                    </button>
-
-                    <button className="btn btn-outline btn-primary" onClick={handleSubmit(onClear)}>
-                        Clear/ Delete
                     </button>
                 </div>
             </form>
