@@ -9,7 +9,7 @@ const NewItem = () => {
 
 	const [listCollections, setlistCollections] = useState([]);
 	const [selectedCollection, setselectedCollection] = useState();
-	const { register, handleSubmit, reset } = useForm({ mode: "onSubmit" })
+	const { register, handleSubmit, reset } = useForm()
 	let navigate = useNavigate();
 
 	const getCollecitons = async () => {

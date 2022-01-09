@@ -9,7 +9,7 @@ export default function Items() {
 			<SubHeader title="item" />
 			<div className="flex flex-row">
 				<FilterMenu />
-				<AllResults />
+				<AllResults Result="itemData"/>
 			</div>
 		</>
 	);
