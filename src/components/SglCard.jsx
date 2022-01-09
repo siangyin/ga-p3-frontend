@@ -1,8 +1,9 @@
 import { FaPen, FaTrash } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SglCard = (props) => {
-	console.log(props.data)
+	const checkProp = (props.data === "itemDetails")
 	const [isChecked, setIsChecked] = useState(true);
 
 	return (
@@ -10,24 +11,33 @@ const SglCard = (props) => {
 			<input type="checkbox" checked="" className="checkbox absolute"></input>
 			<div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
 				<img
-					src={props.data === "itemDetails" ? props.imgUrl : "collection url"}
+					src={checkProp ? props.imgUrl : "collection url"}
 					alt="item"
 					className="object-center object-cover"
 				></img>
 			</div>
 			<a href="#">
-				<h4 className="mt-6 block font-medium text-gray-900">{props.data === "itemDetails" ? `Name: ${props.itemName}` : <p>collection name</p>} </h4>
-				<p className="mt-3 block font-medium text-gray-900">{props.data === "itemDetails" ? `Brand: ${props.brand}` : `Members`}</p>
-				<p className="mt-3 block font-medium text-gray-900">{props.data === "itemDetails" ? `QTY: ${props.qty}` : `Members`}</p>
+				<h4 className="mt-6 block font-medium text-gray-900">{checkProp ? `Name: ${props.itemName}` : <p>collection name</p>} </h4>
+				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Brand: ${props.brand}` : `Members`}</p>
+				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `QTY: ${props.qty}` : `Members`}</p>
 			</a>
-			<div className="flex flex-row">
+
+			{checkProp ? <div className="flex flex-row">
+				<Link to = "/items/edit" state={{itemsID: props.id}}><button className="btn btn-ghost btn-square">
+					<FaPen />
+				</button></Link>
+				<button className="btn btn-ghost btn-square">
+					<FaTrash />
+				</button>
+			</div> : <div className="flex flex-row">
 				<button className="btn btn-ghost btn-square">
 					<FaPen />
 				</button>
 				<button className="btn btn-ghost btn-square">
 					<FaTrash />
 				</button>
-			</div>
+			</div>}
+
 		</div>
 	);
 };

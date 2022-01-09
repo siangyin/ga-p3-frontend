@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-import SubHeader from "../components/SubHeader";
 import axios from "axios";
 
 const NewItem = () => {
@@ -161,10 +160,10 @@ const NewItem = () => {
 
 					<select
 						className="select select-bordered mb-3 sm:w-1/2 w-full place-self-center"
-						name="grpName" value={selectedCollection} onChange={handleChange}
+						name="grpName" value={selectedCollection} onChange={handleChange} defaultValue="Collection"
 					>
-						<option disabled="disabled" selected="selected">
-							Collection
+						<option disabled="disabled" value="Collection">
+							Select Collection
 						</option>
 						{options}
 					</select>
