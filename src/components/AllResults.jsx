@@ -4,11 +4,10 @@ import Pagination from "./Pagination";
 import SglCard from "./SglCard";
 
 const AllResults = (props) => {
-	console.log(props.searchedQuery)
 	const [getUserItems, setgetUserItems] = useState([]);
 
 	const getItems = async () => {
-		await axios.get(`http://localhost:5000/api/v1/items?sort=&fields=&valueFilter=&createdby=${localStorage.getItem('userId')}&grpID=&fav&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}`, { withCredentials: true })
+		await axios.get(`http://localhost:5000/api/v1/items?sort=&fields=&valueFilter=${props.searchedInStockQuery}&createdby=${localStorage.getItem('userId')}&grpID=&fav&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}`, { withCredentials: true })
 			.then(res => {
 				setgetUserItems(res.data.data)
 			})
@@ -16,10 +15,9 @@ const AllResults = (props) => {
 
 	useEffect(() => {
 		getItems()
-	}, [props.searchedItemQuery, props.searchedBrandQuery]);
+	}, [props.searchedItemQuery, props.searchedBrandQuery, props.searchedInStockQuery]);
 
 	const itemData = getUserItems.map((data, index) => {
-		console.log(data)
 		return <SglCard itemName={data.name} brand={data.brand} grpName={data.grpID.grpName} expiryDate={data.expiryDate} imgUrl={data.imgUrl} qty={data.qty} id={data._id} fav={data.fav} data="itemDetails" key={index} />
 	})
 

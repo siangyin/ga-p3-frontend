@@ -2,20 +2,31 @@ import { FaSearch } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 
 const FilterMenu = (props) => {
-	const { register, handleSubmit,reset} = useForm()
+	const { register, handleSubmit, reset, getValues } = useForm()
 
-	
-	const onSearchNameQuery =  (data) =>
-	{
-		
-		 props.handleItemSearch(data.searchQuery)
-		 reset({searchQuery: ""})
+
+	const onSearchNameQuery = (data) => {
+
+		props.handleItemSearch(data.searchQuery)
+		reset({ searchQuery: "" })
 	}
-	const onSearchBrandQuery =  (data) =>
-	{
+	const onSearchBrandQuery = (data) => {
 
 		props.handleBrandSearch(data.searchBrand)
-		reset({searchBrand: ""})
+		reset({ searchBrand: "" })
+
+
+	}
+
+	const stockCheck = (e) => {
+
+		let value = e.target.checked
+		props.handleStockCheck(value)
+	}
+
+	const outOfStockCheck = (e) => {
+		let value = e.target.checked
+		props.handleOutOfStockCheck(value)
 
 	}
 
@@ -69,26 +80,26 @@ const FilterMenu = (props) => {
 
 			{/* sub groups filter button start*/}
 
-			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide space-y-2">
+			<form className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide space-y-2" onSubmit={e => e.preventDefault()}>
 				<p className="menu-title">
 					<span>Quantity</span>
 				</p>
 				<label className="inline-flex items-center">
 					<input
 						type="checkbox"
-						checked=""
 						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+						{...register('inStock', { onChange: (e) => stockCheck(e) })}
 					></input>
-					<span className="ml-2">in-house</span>
+					<span className="ml-2">In Stock</span>
 				</label>
 
 				<label className="inline-flex items-center">
 					<input
 						type="checkbox"
-						checked=""
 						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
+						{...register('outOfStock', { onChange: (e) => outOfStockCheck(e) })}
 					></input>
-					<span className="ml-2">out-of-stock</span>
+					<span className="ml-2">Out of Stock</span>
 				</label>
 
 				<p className="menu-title">
@@ -97,7 +108,6 @@ const FilterMenu = (props) => {
 				<label className="inline-flex items-center">
 					<input
 						type="checkbox"
-						checked=""
 						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
 					></input>
 					<span className="ml-2">Office</span>
@@ -106,7 +116,6 @@ const FilterMenu = (props) => {
 				<label className="inline-flex items-center">
 					<input
 						type="checkbox"
-						checked=""
 						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
 					></input>
 					<span className="ml-2">House</span>
@@ -119,7 +128,6 @@ const FilterMenu = (props) => {
 				<label className="inline-flex items-center">
 					<input
 						type="checkbox"
-						checked=""
 						className="checkbox bg-base-100 focus:border-primary-500 focus:bg-white"
 					></input>
 					<span className="ml-2">Favourite items</span>
