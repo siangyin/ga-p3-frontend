@@ -53,6 +53,7 @@ function App() {
 						<Route path="/items/:id" element={<NewItem />} />
 						<Route path="/items/new" element={<NewItem />} />
 						<Route path="/items/edit" element={<EditItem />} />
+						<Route path="/items/*" element={<Items />} />
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />

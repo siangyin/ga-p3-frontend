@@ -4,12 +4,15 @@ import SubHeader from "../components/SubHeader";
 import { useState } from 'react';
 
 
+
 export default function Items() {
 	const [searchItemQuery, setsearchItemQuery] = useState("");
 	const [searchBrandQuery, setsearchBrandQuery] = useState("");
 	const [instockCheck, setinstockCheck] = useState("");
 	const [CollectionsCheck, setCollectionsCheck] = useState("");
 	const [FavouriteCheck, setFavouriteCheck] = useState("");
+	const [expiryCheck, setexpiryCheck] = useState("");
+
 
 	const handleItemSearch = (searchData) => {
 		if (searchBrandQuery) {
@@ -29,17 +32,14 @@ export default function Items() {
 		setsearchBrandQuery(searchData)
 	}
 
-	const handleStockCheck = (checkData) => {
-		if (checkData === true) {
-			setinstockCheck("qty>=1")
-		}
-	
-
-	}
 
 	const handleOutOfStockCheck = (checkData) => {
 		if (checkData === true) {
 			setinstockCheck("qty=0")
+		}
+		else if(checkData === false)
+		{
+			setinstockCheck("qty>=1")
 		}
 
 
@@ -56,22 +56,17 @@ export default function Items() {
 		}
 		else if(checkData === false)
 		{
-			setFavouriteCheck("")
+			setFavouriteCheck("false")
 		}
 		
 	}
 
-	const handleNotFavouriteCheck = (checkData) => {
-		if(checkData === true)
-		{
-			setFavouriteCheck("false")
-		}
-		else if(checkData === false)
-		{
-			setFavouriteCheck("")
-		}
+	const handleExpiryCheck = (checkData) => {
+		setexpiryCheck(checkData)
 		
 	}
+
+
 
 
 
@@ -82,11 +77,10 @@ export default function Items() {
 				<FilterMenu
 					handleItemSearch={handleItemSearch}
 					handleBrandSearch={handleBrandSearch}
-					handleStockCheck={handleStockCheck}
 					handleOutOfStockCheck={handleOutOfStockCheck} 
 					handleCollectionsCheck={handleCollectionsCheck}
 					handleFavouriteCheck={handleFavouriteCheck}
-					handleNotFavouriteCheck={handleNotFavouriteCheck}/>
+					handleExpiryCheck={handleExpiryCheck}/>
 				<AllResults
 					Result="itemData"
 					searchedItemQuery={searchItemQuery}
@@ -94,6 +88,7 @@ export default function Items() {
 					searchedInStockQuery={instockCheck} 
 					searchedCollectionsQuery={CollectionsCheck}
 					searchedFavouriteQuery={FavouriteCheck}
+					searchedExpiryDate={expiryCheck}
 					/>
 			</div>
 		</>

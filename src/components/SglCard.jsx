@@ -9,9 +9,8 @@ const Swal = require('sweetalert2')
 
 const SglCard = (props) => {
 	const checkProp = (props.data === "itemDetails")
-	const [isChecked, setIsChecked] = useState(true);
 	let navigate = useNavigate();
-	let date = moment(props.expiryDate) .format("LL")
+	let date = moment(props.expiryDate).format("LL")
 
 
 	const handleItemDelete = async () => {
@@ -61,15 +60,16 @@ const SglCard = (props) => {
 
 	return (
 		<div className="group relative text-sm">
-			<input type="checkbox" checked="" className="checkbox absolute"></input>
 			<div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
 				<img
 					src={checkProp ? props.imgUrl : "collection url"}
 					alt="item"
 					className="object-center object-cover"
+					width="500"
+					height="500"
 				></img>
 			</div>
-			<a href="#">
+			<a>
 				<h4 className="mt-6 block font-medium text-gray-900">{checkProp ? `Name: ${props.itemName}` : <p>collection name</p>} </h4>
 				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Brand: ${props.brand}` : `Members`}</p>
 				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `QTY: ${props.qty}` : `Members`}</p>

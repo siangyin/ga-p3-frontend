@@ -8,13 +8,13 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const AllResults = (props) => {
 	const [getUserItems, setgetUserItems] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
-	const PER_PAGE = 5;
+	const PER_PAGE = 8;
 	const offset = currentPage * PER_PAGE;
 	const pageCount = Math.ceil(getUserItems.length / PER_PAGE);
 
 
 	const getItems = async () => {
-		await axios.get(`http://localhost:5000/api/v1/items?sort=&fields=&valueFilter=${props.searchedInStockQuery}&createdby=${localStorage.getItem('userId')}&grpID=${props.searchedCollectionsQuery}&fav=${props.searchedFavouriteQuery}&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}`, { withCredentials: true })
+		await axios.get(`http://localhost:5000/api/v1/items?sort=&fields=&valueFilter=${props.searchedInStockQuery}&createdby=${localStorage.getItem('userId')}&grpID=${props.searchedCollectionsQuery}&fav=${props.searchedFavouriteQuery}&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}&expiryDate=${props.searchedExpiryDate}`, { withCredentials: true })
 			.then(res => {
 				setgetUserItems(res.data.data)
 			})
@@ -22,7 +22,7 @@ const AllResults = (props) => {
 
 	useEffect(() => {
 		getItems()
-	}, [props.searchedItemQuery, props.searchedBrandQuery, props.searchedInStockQuery, props.searchedCollectionsQuery, props.searchedFavouriteQuery]);
+	}, [props.searchedItemQuery, props.searchedBrandQuery, props.searchedInStockQuery, props.searchedCollectionsQuery, props.searchedFavouriteQuery, props.searchedExpiryDate]);
 
 
 	const currentPageData = getUserItems
