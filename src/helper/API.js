@@ -1,1 +1,1 @@
-export const APIurl = "http://sykl-api.herokuapp.com/api/v1";
+export const APIurl = "http://sykl-api.herokuapp.com/api/v1/";

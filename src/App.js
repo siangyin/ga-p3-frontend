@@ -13,10 +13,32 @@ import { AuthContext } from "./contexts/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResetPassword from "./components/ResetPassword";
+import EditItem from "./pages/EditItem";
 
 function App() {
 	const userSession = useContext(AuthContext);
 	console.log(userSession);
+
+
+	// const [currentUser, setCurrentUser] = useState();
+	// username: userSession;
+
+	// useEffect(() => {
+	// 	const getUser = async () => {
+	// 		try {
+	// 			await userSession.username;
+	// 			const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
+	// 			const res = await axios.get(url);
+	// 			setCurrentUser(res.data);
+	// 			console.log(currentUser);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
+
+	// 	getUser();
+	// }, []);
+
 
 	return (
 		<div className="App">
@@ -30,6 +52,7 @@ function App() {
 						<Route path="/items" element={<Items />} />
 						<Route path="/items/:id" element={<NewItem />} />
 						<Route path="/items/new" element={<NewItem />} />
+						<Route path="/items/edit" element={<EditItem />} />
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />

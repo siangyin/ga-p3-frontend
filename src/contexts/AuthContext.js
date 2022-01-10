@@ -12,6 +12,7 @@ const AuthContextProvider = (props) =>
 				.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/getlogin`, { withCredentials: true })
 				.then((res) => {
 					setUserSession(res.data);
+					localStorage.setItem("userId", res.data._id);
 				});
 		} catch (err) {
 			console.log(err);
