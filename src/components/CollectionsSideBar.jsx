@@ -38,7 +38,7 @@ const CollectionsSideBar = () => {
 		return () => {
 			abortCont.abort();
 		};
-	}, [grpDb]);
+	}, []);
 
 	return (
 		<aside className="flex flex-col space-y-6 m-5">

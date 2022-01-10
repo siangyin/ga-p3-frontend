@@ -8,7 +8,7 @@ export default function Collections() {
 			<SubHeader title="collection"/>
 			<div className="flex flex-row">
 				<CollectionsSideBar />
-				<AllResults />
+				<AllResults Result="groupData"/>
 			</div>
 		</>
 	);

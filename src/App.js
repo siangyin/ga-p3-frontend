@@ -12,6 +12,7 @@ import { APIurl } from "./helper/API";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditItem from "./pages/EditItem";
 
 function App() {
 	const userSession = useContext(AuthContext);
@@ -21,21 +22,21 @@ function App() {
 	const [currentUser, setCurrentUser] = useState();
 	// username: userSession;
 
-	useEffect(() => {
-		const getUser = async () => {
-			try {
-				await userSession.username;
-				const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
-				const res = await axios.get(url);
-				setCurrentUser(res.data);
-				console.log(currentUser);
-			} catch (err) {
-				console.log(err);
-			}
-		};
+	// useEffect(() => {
+	// 	const getUser = async () => {
+	// 		try {
+	// 			await userSession.username;
+	// 			const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
+	// 			const res = await axios.get(url);
+	// 			setCurrentUser(res.data);
+	// 			console.log(currentUser);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
 
-		getUser();
-	}, []);
+	// 	getUser();
+	// }, []);
 
 
 	return (
@@ -50,6 +51,7 @@ function App() {
 						<Route path="/items" element={<Items />} />
 						<Route path="/items/:id" element={<NewItem />} />
 						<Route path="/items/new" element={<NewItem />} />
+						<Route path="/items/edit" element={<EditItem />} />
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
