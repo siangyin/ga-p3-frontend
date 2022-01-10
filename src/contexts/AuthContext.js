@@ -9,7 +9,7 @@ const AuthContextProvider = (props) =>
 	const getUserSession = async () => {
 		try {
 			await axios
-				.get("http://localhost:5000/getlogin", { withCredentials: true })
+				.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/getlogin`, { withCredentials: true })
 				.then((res) => {
 					setUserSession(res.data);
 					localStorage.setItem("userId", res.data._id);

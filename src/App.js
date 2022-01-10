@@ -6,12 +6,13 @@ import Items from "./pages/Items";
 import Collections from "./pages/Collections";
 import NewCollection from "./pages/NewCollection";
 import NewItem from "./pages/NewItem";
-import { useContext, useState, useEffect } from "react";
+import { useContext} from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { APIurl } from "./helper/API";
-import axios from "axios";
+// import { APIurl } from "./helper/API";
+// import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ResetPassword from "./components/ResetPassword";
 import EditItem from "./pages/EditItem";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 	console.log(userSession);
 
 
-	const [currentUser, setCurrentUser] = useState();
+	// const [currentUser, setCurrentUser] = useState();
 	// username: userSession;
 
 	// useEffect(() => {
@@ -56,10 +57,12 @@ function App() {
 						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
 						<Route path="/logout" element={<Home />} />
+						<Route path="*" element={<Navigate to="/"/>}/>
 					</>
 				) : (
 					<>
 					<Route path="*" element={<Navigate to="/"/>}/>
+					<Route path="/reset/:token" element={<ResetPassword/>}/>
 					</>
 				)}
 			</Routes>
