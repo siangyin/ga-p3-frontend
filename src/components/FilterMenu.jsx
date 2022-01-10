@@ -1,13 +1,22 @@
 import { FaSearch } from "react-icons/fa";
+import { useForm } from "react-hook-form"
 
 const FilterMenu = (props) => {
+	const { register, handleSubmit} = useForm()
+
+	// props.handleSearch = async (searchQuery) =>
+	// {
+	// 	console.log(searchQuery)
+	// }
+
 	return (
 		<aside className="flex flex-col space-y-6 m-5">
-			<form className="relative">
+			<form className="relative" onSubmit={e => e.preventDefault()}>
 				<input
 					type="text"
 					placeholder="Search items"
 					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
+					{...register('searchQuery')}
 				></input>
 				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey">
 					<FaSearch />

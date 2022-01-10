@@ -18,6 +18,7 @@ const AllResults = (props) => {
 	}, []);
 
 	const itemData = getUserItems.map((data,index) => {
+		console.log(data)
 		return <SglCard itemName={data.name} brand={data.brand} grpName={data.grpID.grpName} expiryDate={data.expiryDate} imgUrl={data.imgUrl} qty={data.qty} id={data._id} fav={data.fav} data="itemDetails" key={index} />
 	})
 
