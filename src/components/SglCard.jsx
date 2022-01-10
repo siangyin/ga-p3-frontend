@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from "axios";
+import moment from "moment";
 const Swal = require('sweetalert2')
 
 const SglCard = (props) => {
 	const checkProp = (props.data === "itemDetails")
 	const [isChecked, setIsChecked] = useState(true);
 	let navigate = useNavigate();
+	let date = moment(props.expiryDate) .format("LL")
 
 
 	const handleItemDelete = async () => {
@@ -71,6 +73,9 @@ const SglCard = (props) => {
 				<h4 className="mt-6 block font-medium text-gray-900">{checkProp ? `Name: ${props.itemName}` : <p>collection name</p>} </h4>
 				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Brand: ${props.brand}` : `Members`}</p>
 				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `QTY: ${props.qty}` : `Members`}</p>
+				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Collections: ${props.grpName}` : `Members`}</p>
+				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Expiry Date: ${date}` : `Members`}</p>
+				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Favourite: ${props.fav ? "Yes" : "No"}` : `Members`}</p>
 			</a>
 
 			{checkProp ? <div className="flex flex-row">

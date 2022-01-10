@@ -4,7 +4,6 @@ import Pagination from "./Pagination";
 import SglCard from "./SglCard";
 
 const AllResults = (props) => {
-
 	const [getUserItems, setgetUserItems] = useState([]);
 
 	const getItems = async () => {
@@ -18,11 +17,8 @@ const AllResults = (props) => {
 		getItems()
 	}, []);
 
-	console.log(getUserItems)
-
 	const itemData = getUserItems.map((data,index) => {
-		console.log(data)
-		return <SglCard itemName={data.name} brand={data.brand} grpName={data.grpID.grpName} expiryDate={data.expiryDate} imgUrl={data.imgUrl} qty={data.qty} id={data._id} data="itemDetails" key={index}/>
+		return <SglCard itemName={data.name} brand={data.brand} grpName={data.grpID.grpName} expiryDate={data.expiryDate} imgUrl={data.imgUrl} qty={data.qty} id={data._id} fav={data.fav} data="itemDetails" key={index} />
 	})
 
 	return (
