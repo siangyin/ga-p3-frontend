@@ -2,12 +2,22 @@ import { FaSearch } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 
 const FilterMenu = (props) => {
-	const { register, handleSubmit} = useForm()
+	const { register, handleSubmit,reset} = useForm()
 
-	// props.handleSearch = async (searchQuery) =>
-	// {
-	// 	console.log(searchQuery)
-	// }
+	
+	const onSearchNameQuery =  (data) =>
+	{
+		
+		 props.handleItemSearch(data.searchQuery)
+		 reset({searchQuery: ""})
+	}
+	const onSearchBrandQuery =  (data) =>
+	{
+
+		props.handleBrandSearch(data.searchBrand)
+		reset({searchBrand: ""})
+
+	}
 
 	return (
 		<aside className="flex flex-col space-y-6 m-5">
@@ -18,7 +28,18 @@ const FilterMenu = (props) => {
 					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
 					{...register('searchQuery')}
 				></input>
-				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey">
+				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey" onClick={handleSubmit(onSearchNameQuery)}>
+					<FaSearch />
+				</button>
+			</form>
+			<form className="relative" onSubmit={e => e.preventDefault()}>
+				<input
+					type="text"
+					placeholder="Search Brand"
+					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
+					{...register('searchBrand')}
+				></input>
+				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey" onClick={handleSubmit(onSearchBrandQuery)}>
 					<FaSearch />
 				</button>
 			</form>

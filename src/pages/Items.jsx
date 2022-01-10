@@ -5,19 +5,37 @@ import { useState } from 'react';
 
 
 export default function Items() {
-	const [searchQuery, setsearchQuery] = useState("");
+	const [searchItemQuery, setsearchItemQuery] = useState("");
+	const [searchBrandQuery, setsearchBrandQuery] = useState("");
 
-	const handleSearch = (searchData) =>
+	const handleItemSearch = (searchData) =>
 	{
-		setsearchQuery(searchData)
+		if(searchBrandQuery)
+		{
+		setsearchBrandQuery("")
+		setsearchItemQuery(searchData)
+		}
+	
+		setsearchItemQuery(searchData)
+		
+	}
+
+	const handleBrandSearch = (searchData) =>
+	{
+		if(searchItemQuery)
+		{
+		setsearchItemQuery("")
+		setsearchBrandQuery(searchData)
+		}
+		setsearchBrandQuery(searchData)
 	}
 
 	return (
 		<>
 			<SubHeader title="item" />
 			<div className="flex flex-row">
-				<FilterMenu handleSearch={handleSearch}/>
-				<AllResults Result="itemData"/>
+				<FilterMenu handleItemSearch={handleItemSearch} handleBrandSearch={handleBrandSearch}/>
+				<AllResults Result="itemData" searchedItemQuery={searchItemQuery} searchedBrandQuery={searchBrandQuery}/>
 			</div>
 		</>
 	);
