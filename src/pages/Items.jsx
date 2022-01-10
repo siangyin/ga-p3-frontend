@@ -8,6 +8,8 @@ export default function Items() {
 	const [searchItemQuery, setsearchItemQuery] = useState("");
 	const [searchBrandQuery, setsearchBrandQuery] = useState("");
 	const [instockCheck, setinstockCheck] = useState("");
+	const [CollectionsCheck, setCollectionsCheck] = useState("");
+	const [FavouriteCheck, setFavouriteCheck] = useState("");
 
 	const handleItemSearch = (searchData) => {
 		if (searchBrandQuery) {
@@ -31,9 +33,7 @@ export default function Items() {
 		if (checkData === true) {
 			setinstockCheck("qty>=1")
 		}
-		else if (checkData === false) {
-			setinstockCheck("")
-		}
+	
 
 	}
 
@@ -41,10 +41,36 @@ export default function Items() {
 		if (checkData === true) {
 			setinstockCheck("qty=0")
 		}
-		else if (checkData === false) {
-			setinstockCheck("")
-		}
 
+
+	}
+
+	const handleCollectionsCheck = (checkData) => {
+		setCollectionsCheck(checkData)
+	}
+
+	const handleFavouriteCheck = (checkData) => {
+		if(checkData === true)
+		{
+			setFavouriteCheck("true")
+		}
+		else if(checkData === false)
+		{
+			setFavouriteCheck("")
+		}
+		
+	}
+
+	const handleNotFavouriteCheck = (checkData) => {
+		if(checkData === true)
+		{
+			setFavouriteCheck("false")
+		}
+		else if(checkData === false)
+		{
+			setFavouriteCheck("")
+		}
+		
 	}
 
 
@@ -57,12 +83,18 @@ export default function Items() {
 					handleItemSearch={handleItemSearch}
 					handleBrandSearch={handleBrandSearch}
 					handleStockCheck={handleStockCheck}
-					handleOutOfStockCheck={handleOutOfStockCheck} />
+					handleOutOfStockCheck={handleOutOfStockCheck} 
+					handleCollectionsCheck={handleCollectionsCheck}
+					handleFavouriteCheck={handleFavouriteCheck}
+					handleNotFavouriteCheck={handleNotFavouriteCheck}/>
 				<AllResults
 					Result="itemData"
 					searchedItemQuery={searchItemQuery}
 					searchedBrandQuery={searchBrandQuery}
-					searchedInStockQuery={instockCheck} />
+					searchedInStockQuery={instockCheck} 
+					searchedCollectionsQuery={CollectionsCheck}
+					searchedFavouriteQuery={FavouriteCheck}
+					/>
 			</div>
 		</>
 	);
