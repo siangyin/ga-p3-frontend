@@ -1,5 +1,4 @@
 import { FaPen, FaTrash } from "react-icons/fa";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -59,25 +58,23 @@ const SglCard = (props) => {
 
 
 	return (
-		<div className="group relative text-sm">
-			<div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-				<img
-					src={checkProp ? props.imgUrl : "collection url"}
-					alt="item"
-					className="object-center object-cover"
-					width="500"
-					height="500"
-				></img>
-			</div>
-			<a>
-				<h4 className="mt-6 block font-medium text-gray-900">{checkProp ? `Name: ${props.itemName}` : <p>collection name</p>} </h4>
-				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Brand: ${props.brand}` : `Members`}</p>
-				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `QTY: ${props.qty}` : `Members`}</p>
-				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Collections: ${props.grpName}` : `Members`}</p>
-				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Expiry Date: ${date}` : `Members`}</p>
-				<p className="mt-3 block font-medium text-gray-900">{checkProp ? `Favourite: ${props.fav ? "Yes" : "No"}` : `Members`}</p>
-			</a>
 
+		<div class="max-w-sm rounded overflow-hidden shadow-lg">
+			<img class="w-full" src={checkProp ? props.imgUrl : props.imgUrl}
+				alt="item"
+				className="object-center object-cover"
+				width="500"
+				height="500"
+			/>
+			<div class="px-6 py-4">
+				<div class="font-bold text-xl mb-2">{checkProp ? `Name: ${props.itemName}` : `Name: ${props.itemName}`}</div>
+				<p class="text-gray-700 text-base">
+					{checkProp ? `Brand: ${props.brand}` : `Brand: ${props.brand}`}</p>
+				<p>{checkProp ? `QTY: ${props.qty}` : `QTY: ${props.qty}`}</p>
+				<p>{checkProp ? `Collections: ${props.grpName}` : ""}</p>
+				<p>{checkProp ? `Expiry Date: ${date}` : `Expiry Date: ${date}`}</p>
+				<p>{checkProp ? `Favourite: ${props.fav ? "Yes" : "No"}` : `Favourite: ${props.fav ? "Yes" : "No"}`}</p>
+			</div>
 			{checkProp ? <div className="flex flex-row">
 				<Link to="/items/edit" state={{ itemsID: props.id }}><button className="btn btn-ghost btn-square">
 					<FaPen />
@@ -85,17 +82,10 @@ const SglCard = (props) => {
 				<button className="btn btn-ghost btn-square" onClick={handleItemDelete}>
 					<FaTrash />
 				</button>
-			</div> : <div className="flex flex-row">
-				<button className="btn btn-ghost btn-square">
-					<FaPen />
-				</button>
-				<button className="btn btn-ghost btn-square">
-					<FaTrash />
-				</button>
-			</div>}
+			</div> : ""}
 
 		</div>
-	);
-};
+	)
 
+};
 export default SglCard;

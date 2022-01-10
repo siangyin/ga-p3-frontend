@@ -37,8 +37,7 @@ export default function Items() {
 		if (checkData === true) {
 			setinstockCheck("qty=0")
 		}
-		else if(checkData === false)
-		{
+		else if (checkData === false) {
 			setinstockCheck("qty>=1")
 		}
 
@@ -50,20 +49,18 @@ export default function Items() {
 	}
 
 	const handleFavouriteCheck = (checkData) => {
-		if(checkData === true)
-		{
+		if (checkData === true) {
 			setFavouriteCheck("true")
 		}
-		else if(checkData === false)
-		{
+		else if (checkData === false) {
 			setFavouriteCheck("false")
 		}
-		
+
 	}
 
 	const handleExpiryCheck = (checkData) => {
 		setexpiryCheck(checkData)
-		
+
 	}
 
 
@@ -77,19 +74,19 @@ export default function Items() {
 				<FilterMenu
 					handleItemSearch={handleItemSearch}
 					handleBrandSearch={handleBrandSearch}
-					handleOutOfStockCheck={handleOutOfStockCheck} 
+					handleOutOfStockCheck={handleOutOfStockCheck}
 					handleCollectionsCheck={handleCollectionsCheck}
 					handleFavouriteCheck={handleFavouriteCheck}
-					handleExpiryCheck={handleExpiryCheck}/>
+					handleExpiryCheck={handleExpiryCheck} />
 				<AllResults
 					Result="itemData"
 					searchedItemQuery={searchItemQuery}
 					searchedBrandQuery={searchBrandQuery}
-					searchedInStockQuery={instockCheck} 
+					searchedInStockQuery={instockCheck}
 					searchedCollectionsQuery={CollectionsCheck}
 					searchedFavouriteQuery={FavouriteCheck}
 					searchedExpiryDate={expiryCheck}
-					/>
+				/>
 			</div>
 		</>
 	);

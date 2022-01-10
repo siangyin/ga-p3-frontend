@@ -85,7 +85,7 @@ const FilterMenu = (props) => {
 
 	const listFriendsCollections = listMemberCollections.map((data, index) => {
 		if (data.ownerID !== localStorage.getItem('userId')) {
-			return <Link to ={`/items/membersitems/${data.grpName}`} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5">{data.grpName}</button></Link>
+			return <Link to={`/items/${data.grpName}`} state={{ grpID: data._id, grpName: data.grpName }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
 		}
 	})
 
@@ -148,12 +148,6 @@ const FilterMenu = (props) => {
 				</p>
 				{listofCollecitons}
 
-
-				<p className="menu-title">
-					<span>Friends Collections</span>
-				</p>
-				{listFriendsCollections}
-
 				{/* fav  */}
 				<p className="menu-title">
 					<span>Favourite</span>
@@ -166,8 +160,12 @@ const FilterMenu = (props) => {
 					></input>
 					<span className="ml-2">Yes/No</span>
 				</label>
+				<p className="menu-title">
+					<span>Friends Collections</span>
+				</p>
+				{listFriendsCollections}
 				<button className="btn btn-outline btn-primary" onClick={() => navigate(0)}>
-					Reset
+					Reset Filters
 				</button>
 			</form>
 
