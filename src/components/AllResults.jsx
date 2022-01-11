@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import Pagination from "./Pagination";
 import SglCard from "./SglCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -34,7 +33,6 @@ const AllResults = (props) => {
 		getGroupItems()
 	}, [props.searchedItemQuery, props.searchedBrandQuery, props.searchedInStockQuery, props.searchedCollectionsQuery, props.searchedFavouriteQuery, props.searchedExpiryDate]);
 
-	console.log(getMemberItems)
 
 	const currentPageData = getUserItems
 		.slice(offset, offset + PER_PAGE)

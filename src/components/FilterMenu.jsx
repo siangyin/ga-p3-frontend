@@ -57,7 +57,6 @@ const FilterMenu = (props) => {
 	const getCollecitonsMember = async () => {
 		await axios.get(`http://localhost:5000/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
 			.then(res => {
-				console.log(res.data.data)
 				setlistMemberCollections(res.data.data)
 
 			})
