@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const NewCollection = () => {
 	
-	const {register, handleSubmit, reset, formState: { errors } } = useForm({ node: 'onChange'});
+	const {register, handleSubmit, reset, formState: { errors } } = useForm();
 	let navigate = useNavigate();
 	
 
