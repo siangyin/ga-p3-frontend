@@ -158,7 +158,7 @@ export default function AccountForm() {
     return (
 
         <div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
-            <div className="card-body">{userSession ? `Welcome ${userSession.username}` :
+            <div className="card-body">{userSession ? `Welcome ${userSession.username} UID(${userSession._id})` :
                 <form onSubmit={e => e.preventDefault()}>
                     <div className="form-control">
                         <label className="label">
