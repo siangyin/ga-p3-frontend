@@ -106,10 +106,6 @@ const NewCollection = () => {
 						placeholder="Collection Name"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
 						{...register('grpName', {required: true, maxLength: 50})}
-						// value={grpMembers}
-						// onChange={(e) => {
-						// 	setGrpMembers(e.target.value);
-						// }}
 					></input>
 					{errors.grpName && errors.grpName.type === "required" && <span className=" text-pink text-xs italic">This field is required</span>}
 
@@ -133,7 +129,7 @@ const NewCollection = () => {
 						htmlFor="member"
 						className="sm:w-1/2 w-full place-self-center"
 					>
-						Member's userid /username/ email
+						Enter UID
 					</label>
 					<input
 						type="text"
