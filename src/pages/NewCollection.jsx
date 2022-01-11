@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import SubHeader from "../components/SubHeader";
-// import { FaUsers, FaTrash, FaPen } from "react-icons/fa";
-// import { APIurl } from "../helper/API";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { data } from "autoprefixer";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,14 +14,14 @@ const NewCollection = () => {
 
 
 	const onSubmitNewGroup = async (data) => {
-		console.log(data);
+
 		const members = await data.members;
 		const newmembers = await members.split(',');
-		console.log(newmembers);
+	
 
 		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
 		.then(res => {
-			// console.log(res);
+			
 			if (res.status===200) {
 				console.log("toast now");
 				toast.success('Successfully created!', {
@@ -37,7 +34,6 @@ const NewCollection = () => {
 					progress: undefined,
 				});
 				navigate('/collections')
-				// reset();
 			}
 		}).catch(err=> {
 			console.log(err);
@@ -54,7 +50,7 @@ const NewCollection = () => {
 	}
 
 	const onSaveAndAdd = async (data) => {
-		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members:[data.members], ownerID: localStorage.getItem('userId')}, {withCredentials: true})
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
 		.then(res => {
 			// console.log(res);
 			if (res.status===200) {
@@ -130,8 +126,6 @@ const NewCollection = () => {
 						placeholder="Image URL"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
 						{...register('imgUrl')}
-						// value={grpDb.imgUrl}
-						// onChange={handleChange}
 					></input>
 
 					<label
@@ -147,8 +141,6 @@ const NewCollection = () => {
 						placeholder="eg: John21, Dr.Stranger, Ironman"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
 						{...register('members')}
-						// value={grpDb.members}
-						// onChange={handleChange}11
 					></input>
 
 					{/* next sample */}
