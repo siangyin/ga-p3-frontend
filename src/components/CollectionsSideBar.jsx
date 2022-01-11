@@ -7,38 +7,6 @@ const CollectionsSideBar = () => {
 	const [grpDb, setGrpDb] = useState([]);
 	const [ownerDb, setOwnerDb] = useState();
 
-	useEffect(() => {
-		const abortCont = new AbortController();
-
-		const getUser = async () => {
-			const url = APIurl + "members?search=YippeeYaya";
-
-			try {
-				const response = await axios.get(url, { signal: abortCont.signal });
-				const objArr = response.data;
-				setOwnerDb(objArr);
-				// console.log(objArr);
-				let newArr = [];
-
-				objArr.data[0].groupsID.map(async (id) => {
-					const url = APIurl + "groups/" + id;
-					const res = await axios.get(url);
-					const objArr = res.data.data;
-					newArr.push(objArr);
-				});
-				setGrpDb(newArr);
-				// console.log(newArr);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		getUser();
-		// console.log(grpDb);
-		return () => {
-			abortCont.abort();
-		};
-	}, []);
 
 	return (
 		<aside className="flex flex-col space-y-6 m-5">

@@ -140,38 +140,6 @@ const NewCollection = () => {
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
 						{...register('members')}
 					></input>
-
-					{/* next sample */}
-
-					{/* <ul className="sm:w-1/2 w-full place-self-center rounded-lg border border-gray-light bg-base-200">
-						<li className="inline-flex relative items-center py-2 px-4 w-full font-medium rounded-t-lg border-b border-gray-light">
-							<span>Members</span>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
-						>
-							<span>Yippee</span>{" "}
-							<em className="text-sm text-primary">Owner</em>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
-						>
-							<span>YippeYaya</span>
-							<FaTrash />
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light rounded-b-lg "
-						>
-							<span>Yippyyyy</span>
-							<FaTrash />
-						</li>
-					</ul> */}
-
-					{/* buttons group */}
-
 					
 						<div className="flex flex-row place-self-center space-x-2">
 							<button
