@@ -50,6 +50,8 @@ const NewCollection = () => {
 	}
 
 	const onSaveAndAdd = async (data) => {
+		const members = await data.members;
+		const newmembers = await members.split(',');
 		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
 		.then(res => {
 			// console.log(res);
