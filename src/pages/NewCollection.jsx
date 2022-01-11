@@ -1,68 +1,88 @@
 import { useState, useEffect } from "react";
 import SubHeader from "../components/SubHeader";
-import { FaUsers, FaTrash, FaPen } from "react-icons/fa";
-import { APIurl } from "../helper/API";
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewCollection = () => {
-	const [isDisableSubmitBtn, setIsDisableSubmitBtn] = useState(false);
+	
+	const {register, handleSubmit, reset, formState: { errors } } = useForm();
+	let navigate = useNavigate();
+	
 
-	const [grpMembers, setGrpMembers] = useState();
-	const [grpDb, setGrpDb] = useState({
-		grpName: "",
-		imgUrl: "",
-		members: "",
-	});
 
-	const [ownerDb, setOwnerDb] = useState();
+	const onSubmitNewGroup = async (data) => {
 
-	function removeItem(id) {
-		setGrpMembers(grpMembers.filter((item) => item.id !== id));
-	}
+		const members = await data.members;
+		const newmembers = await members.split(',');
+	
 
-	function handleChange(e) {
-		const name = e.target.name;
-		const value = e.target.value;
-
-		setGrpDb((prevState) => ({
-			...prevState,
-			[name]: value,
-		}));
-	}
-
-	function handleSubmit(e) {
-		e.preventDefault();
-		const membersArr = grpDb.members.split(",");
-		setGrpDb((prevState) => ({
-			...prevState,
-			members: membersArr,
-		}));
-		console.log(grpDb);
-	}
-
-	useEffect(() => {
-		const abortCont = new AbortController();
-
-		const getUser = async () => {
-			const url = APIurl + "members?search=YippeeYaya";
-
-			try {
-				const response = await axios.get(url, { signal: abortCont.signal });
-				const objArr = response.data;
-				setOwnerDb(objArr);
-				console.log(objArr);
-				setGrpDb((prevState) => ({ ...prevState, ownerID: objArr.data._id }));
-			} catch (error) {
-				console.log(error);
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
+		.then(res => {
+			
+			if (res.status===200) {
+				console.log("toast now");
+				toast.success('Successfully created!', {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				navigate('/collections')
 			}
-		};
+		}).catch(err=> {
+			console.log(err);
+			toast.error(err.response.data.status, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		})
+	}
 
-		getUser();
+	const onSaveAndAdd = async (data) => {
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
+		.then(res => {
+			// console.log(res);
+			if (res.status===200) {
+				console.log("toast now");
+				toast.success('Successfully created!', {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				reset();
+			}
+		}).catch(err=> {
+			console.log(err);
+			toast.error(err.response.data.status, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		})
+	}
 
-		return () => {
-			abortCont.abort();
-		};
-	}, []);
+	const onClearDelete = () => {
+		reset();
+	}
 
 	return (
 		<>
@@ -72,7 +92,7 @@ const NewCollection = () => {
 						New Collection
 					</h1>
 				</div>
-				<form className="form-control flex flex-wrap justify-center mt-6 space-y-2">
+				<form className="form-control flex flex-wrap justify-center mt-6 space-y-2" onSubmit={e => e.preventDefault}>
 					<label
 						type="text"
 						htmlFor="grpName"
@@ -85,11 +105,9 @@ const NewCollection = () => {
 						name="grpName"
 						placeholder="Collection Name"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
-						value={grpMembers}
-						onChange={(e) => {
-							setGrpMembers(e.target.value);
-						}}
+						{...register('grpName', {required: true, maxLength: 50})}
 					></input>
+					{errors.grpName && errors.grpName.type === "required" && <span className=" text-pink text-xs italic">This field is required</span>}
 
 					<label
 						type="text"
@@ -103,8 +121,7 @@ const NewCollection = () => {
 						name="imgUrl"
 						placeholder="Image URL"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
-						value={grpDb.imgUrl}
-						onChange={handleChange}
+						{...register('imgUrl')}
 					></input>
 
 					<label
@@ -112,15 +129,14 @@ const NewCollection = () => {
 						htmlFor="member"
 						className="sm:w-1/2 w-full place-self-center"
 					>
-						Member's userid /username/ email
+						Enter UID
 					</label>
 					<input
 						type="text"
 						name="members"
 						placeholder="eg: John21, Dr.Stranger, Ironman"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
-						value={grpDb.members}
-						onChange={handleChange}
+						{...register('members')}
 					></input>
 
 					{/* next sample */}
@@ -154,38 +170,25 @@ const NewCollection = () => {
 
 					{/* buttons group */}
 
-					{isDisableSubmitBtn ? (
-						<div className="flex flex-row place-self-center space-x-2">
-							<button disabled className="btn btn-outline btn-primary mt-6">
-								Save & go to List
-							</button>
-
-							<button disabled className="btn btn-outline btn-primary mt-6">
-								Save & Add another
-							</button>
-
-							<button disabled className="btn btn-outline btn-primary mt-6">
-								Clear/ Delete
-							</button>
-						</div>
-					) : (
+					
 						<div className="flex flex-row place-self-center space-x-2">
 							<button
 								className="btn btn-outline btn-primary mt-6"
-								onClick={handleSubmit}
+								onClick={handleSubmit(onSubmitNewGroup)}
 							>
 								Save & go to List
 							</button>
 
-							<button className="btn btn-outline btn-primary mt-6">
+							<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onSaveAndAdd)}>
 								Save & Add another
 							</button>
+						
 
-							<button className="btn btn-outline btn-primary mt-6">
+							<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onClearDelete)}>
 								Clear/ Delete
 							</button>
 						</div>
-					)}
+					
 
 					<div className="w-6/12 sm:w-4/12 px-4 place-self-center">
 						<img
