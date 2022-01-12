@@ -9,15 +9,13 @@
 
 ## 🌼 Introduction
 
-Pantry Manager that helps you keep track of what is in your pantry at all times.
+The average family of four wastes 25% of their food each year. Our Online pantry manager help user to manage the list of item in your kitchen aiming for less wastage, save money, share food.  
 
-### MVP
 
 
 ## 🚀 Features:
-- Online pantry manager help user to manage the list of item in your kitchen aiming for less wastage, save money, share food.
-- Stop wasting food: The average family of four wastes 25% of their food each year.
-- Food record expiry date: tells you when your food is going to expire so that you can use it before it's expiring.
+
+- Food list with tracking of quantity and expiry date: tells you when your food is going to expire so that you can use it before it's expiring.
 - Photo saving: input the img url of the item for quick reference in viewing your on-hand item easily.
 - Share your food: Easily invite your family members, friends or colleagues to share your food.
 - Organize your food: Create spaces such as fridge, pantry, and freezer and ensure that your food is always organized and ready at the time you need them.
@@ -32,6 +30,26 @@ Pantry Manager that helps you keep track of what is in your pantry at all times.
   - Existing user can login to access the app.
   - Existing user can logout from the app.
 
+
+```javascript
+
+// sample user model
+
+{
+"_id": "61cd4d71d22e45187ad65bdc",
+"memberName": "Siangyin",
+"groupsID": [
+"61cd4d71d22e45187ad65bde",
+"61cdc66664687639320be32a"
+],
+"createdAt": "2021-12-30T06:10:57.618Z",
+"updatedAt": "2021-12-31T02:56:26.967Z",
+"__v": 0
+},
+
+
+```
+
 - **Collections** (aka groups/category)
   - Each new account created will auto generate one personal collection.
   - User can edit collection detail.
@@ -40,6 +58,27 @@ Pantry Manager that helps you keep track of what is in your pantry at all times.
   - All user within the group can create and edit item within the collection.
   - Owner of the collection can add new member or delete member from accessing. 
 
+
+```javascript
+
+// sample collection/group model 
+
+{
+"_id": "61cd4d71d22e45187ad65bde",
+"grpName": "SiangYin-Personal",
+"imgUrl": "https://www.gemkom.com.tr/wp-content/uploads/2020/02/NO_IMG_600x600-1.png",
+"members": [
+"61cd4d71d22e45187ad65bdc"
+],
+"ownerID": "61cd4d71d22e45187ad65bdc",
+"createdAt": "2021-12-30T06:10:57.637Z",
+"updatedAt": "2021-12-30T06:10:57.637Z",
+"__v": 0
+},
+
+
+```
+
 - **Items** 
   - User can create new item and save in collection of choice, which allow it's member to view and edit the item.
   - User can view all of their items created.
@@ -47,23 +86,25 @@ Pantry Manager that helps you keep track of what is in your pantry at all times.
   - User can edit any item in shared collection.
 
 
+
 ```javascript
-// itemOBJ
+
+
+// sample item model
 
 {
-ItemID:
-ItemName: String,
-expiryDate: Date,
-Qty: Number,
-Fav: Boolean,
-Cost/Price: Number,
-Brand: String,
-Img:String,(optional upload)**
-ProductCode: Number,
-TeamGroupID: Number,
+    "name":"ice cream - choco",
+    "brand":"haagen-dazs",
+    "expiryDate":"2023-11-30T14:45:44.554Z",
+    "qty":2,
+    "fav":false,
+    "grpID":"61dd745ef93cd32e9c410746",
+    "imgUrl":"https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/11576937_XL1_20210118.jpg",
+    "createdBy":"61dbbe796e95d333c162908a"
 }
-```
 
+
+```
 
 
 
@@ -149,14 +190,15 @@ Item > Edit Group
 Project is created with:
 
 ### Front-End
-- HTML
-- CSS
-- REACT
-- bla bla bla black sheeeep
+- Tailwindcss
+- React
+
 
 ### Back-End
 - Node.js
-- bla bla bla black sheeeep
+- Express, express-session
+- MongoDb/Mongoose
+
 
 ## Setup
 
@@ -175,12 +217,5 @@ $ npm start
 
 - Hakeym @hakeymmhd 
 - Weilun @Shoreasg 
-- SiangYin 
+- SiangYin @siangyin
 
-
-
-## Links
-
-### Inspirations and Important Resources
-
-[etc links](http://www.omdbapi.com/ "OMDB API")
