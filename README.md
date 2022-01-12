@@ -93,16 +93,18 @@ The average family of four wastes 25% of their food each year. Share your kitche
 // sample item model
 
 {
-    "name":"ice cream - choco",
-    "brand":"haagen-dazs",
-    "expiryDate":"2023-11-30T14:45:44.554Z",
-    "qty":2,
-    "fav":false,
-    "grpID":"61dd745ef93cd32e9c410746",
-    "imgUrl":"https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/11576937_XL1_20210118.jpg",
-    "createdBy":"61dbbe796e95d333c162908a"
+"_id":"61de5cb57a1fa1cac63c929e",
+"name":"ice kk","brand":"haagen-dazs",
+"expiryDate":"2023-11-30T14:45:44.554Z,
+"qty":2,
+"fav":false,
+"grpID":"61dd82d009f2c11b67c608e9",
+"imgUrl":"https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/11576937_XL1_20210118.jpg",
+"createdBy":"61dbbe796e95d333c162908a",
+"createdAt":"2022-01-12T04:44:37.992Z",
+"updatedAt":"2022-01-12T04:44:37.992Z",
+"__v":0
 }
-
 
 ```
 
