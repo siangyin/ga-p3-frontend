@@ -13,7 +13,7 @@ export default function NavBar() {
 	const onLogout = async () => {
 		try {
 			await axios
-				.delete("http://localhost:5000/logout", { withCredentials: true })
+				.delete(`${process.env.REACT_APP_DEV_BACKEND_URL}/logout`, { withCredentials: true })
 				.then((res) => {
 					if (res.status === 200) {
 						console.log(res.data);
@@ -32,7 +32,15 @@ export default function NavBar() {
 					}
 				});
 		} catch (err) {
-			console.log(err);
+			toast(err.response.data.message, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: false,
+				draggable: false,
+				progress: undefined,
+			});
 		}
 	};
 

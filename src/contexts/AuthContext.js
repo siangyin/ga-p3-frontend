@@ -2,9 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 export const AuthContext = createContext();
 
-const AuthContextProvider = (props) =>
-{
-    const [userSession, setUserSession] = useState({})
+const AuthContextProvider = (props) => {
+	const [userSession, setUserSession] = useState({})
 
 	const getUserSession = async () => {
 		try {
@@ -15,7 +14,7 @@ const AuthContextProvider = (props) =>
 					localStorage.setItem("userId", res.data._id);
 				});
 		} catch (err) {
-			console.log(err);
+			return err
 		}
 	};
 

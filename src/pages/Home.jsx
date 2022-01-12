@@ -2,7 +2,7 @@ import React from "react";
 import photo from "../assets/images/photo.svg";
 import AccountForm from "../components/AccountForm";
 
-export default function Home(){
+export default function Home() {
 	return (
 		<div className="hero min-h-screen bg-base-200 flex flex-wrap justify-center">
 			<div className="flex-col justify-center hero-content lg:flex-row md:w-1/2">
@@ -21,8 +21,8 @@ export default function Home(){
 					</div>
 				</div>
 			</div>
-			<AccountForm/>
+			<AccountForm />
 		</div>
-	
+
 	);
 };

@@ -1,44 +1,30 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-import { APIurl } from "../helper/API";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const CollectionsSideBar = () => {
-	const [grpDb, setGrpDb] = useState([]);
-	const [ownerDb, setOwnerDb] = useState();
+	const [listMemberCollections, setlistMemberCollections] = useState([]);
+
+
+	const getCollecitonsMember = async () => {
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
+			.then(res => {
+				setlistMemberCollections(res.data.data)
+			})
+	}
+
 
 	useEffect(() => {
-		const abortCont = new AbortController();
-
-		const getUser = async () => {
-			const url = APIurl + "members?search=YippeeYaya";
-
-			try {
-				const response = await axios.get(url, { signal: abortCont.signal });
-				const objArr = response.data;
-				setOwnerDb(objArr);
-				// console.log(objArr);
-				let newArr = [];
-
-				objArr.data[0].groupsID.map(async (id) => {
-					const url = APIurl + "groups/" + id;
-					const res = await axios.get(url);
-					const objArr = res.data.data;
-					newArr.push(objArr);
-				});
-				setGrpDb(newArr);
-				// console.log(newArr);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		getUser();
-		// console.log(grpDb);
-		return () => {
-			abortCont.abort();
-		};
+		getCollecitonsMember()
 	}, []);
+
+	const listFriendsCollections = listMemberCollections.map((data, index) => {
+		if (data.ownerID !== localStorage.getItem('userId')) {
+			return <Link to={`/collections/${data.grpName}`} state={{ friendsNumMembers: data.members.length, friendsgrpName: data.grpName, friendsMembers: data.members, friendsimgURL: data.imgUrl, ownerID: data.ownerID }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
+		}
+		return true
+	})
 
 	return (
 		<aside className="flex flex-col space-y-6 m-5">
@@ -57,13 +43,11 @@ const CollectionsSideBar = () => {
 
 			<article className="menu p-4 shadow-md rounded-box bg-base-200 btn-wide space-y-1.5">
 				<p className="menu-title">
-					<span>Collections List</span>
+					<span>Friends Collections</span>
+
 				</p>
-				{grpDb.map((grp) => {
-					<p key={grp._id} id={grp._id} className="hover:text-primary">
-						{grp.grpName}
-					</p>;
-				})}
+				{listFriendsCollections}
+
 			</article>
 
 			{/* sub groups filter button end */}
