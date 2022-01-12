@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -18,6 +18,7 @@ import MembersCollection from "./pages/MembersCollection";
 
 function App() {
 	const userSession = useContext(AuthContext);
+
 
 	return (
 		<div className="App">

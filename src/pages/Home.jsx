@@ -4,20 +4,23 @@ import AccountForm from "../components/AccountForm";
 
 export default function Home() {
 	return (
-		<div className="hero min-h-screen bg-base-200 flex flex-wrap justify-center">
+		<div className="hero flex flex-wrap justify-center container sm:mt-20">
 			<div className="flex-col justify-center hero-content lg:flex-row md:w-1/2">
-				<div className="text-center lg:text-left p-5">
-					<img src={photo} alt="woman-photos" className="hero min-h-fit"></img>
+				<div className="place-items-center p-5">
+					<img
+						src={photo}
+						alt="woman-photos"
+						className="hero sm:h-80 m-5"
+					></img>
 
-					<div className="justify-center">
-						<div className="max-w-md">
-							<h1 className="text-5xl font-bold">Hello</h1>
-							<h2 className="text-3xl font-bold">Share your kitchen leh!</h2>
-							<p className="mb-5">
-								Manage your pantry inventory & track food expiry. Eat smarter.
-								Save money. Waste less.
-							</p>
-						</div>
+					<div className="max-w-md">
+						<h1 className="md:text-3xl sm:text-4xl text-2xl font-bold">
+							Share your kitchen leh!
+						</h1>
+						<p className="mb-5 sm:text-xl md:text-lg text-base">
+							Manage your pantry inventory & track food expiry. Eat smarter:
+							Save money. Waste less.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -25,4 +28,4 @@ export default function Home() {
 		</div>
 
 	);
-};
+}
