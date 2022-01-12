@@ -11,7 +11,6 @@ export default function ResetPassword() {
 
     let { token } = useParams()
     const [isValid, setValid] = useState(false);
-    console.log(token)
 
     useEffect(() => {
         try {
@@ -27,7 +26,7 @@ export default function ResetPassword() {
 
                 });
         } catch (err) {
-            console.log(err);
+            return err
         }
     }, []);
     if (isValid === true) {

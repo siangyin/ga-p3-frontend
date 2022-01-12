@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import SubHeader from "../components/SubHeader";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,24 +5,35 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const NewCollection = () => {
-	
-	const {register, handleSubmit, reset, formState: { errors } } = useForm();
+
+	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 	let navigate = useNavigate();
-	
+
 
 
 	const onSubmitNewGroup = async (data) => {
 
 		const members = await data.members;
 		const newmembers = await members.split(',');
-	
 
-		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
-		.then(res => {
-			
-			if (res.status===200) {
-				console.log("toast now");
-				toast.success('Successfully created!', {
+
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, { grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId') }, { withCredentials: true })
+			.then(res => {
+
+				if (res.status === 200) {
+					toast.success('Successfully created!', {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+					});
+					navigate('/collections')
+				}
+			}).catch(err => {
+				toast.error(err.response.data.status, {
 					position: "top-right",
 					autoClose: 5000,
 					hideProgressBar: false,
@@ -33,31 +42,28 @@ const NewCollection = () => {
 					draggable: true,
 					progress: undefined,
 				});
-				navigate('/collections')
-			}
-		}).catch(err=> {
-			console.log(err);
-			toast.error(err.response.data.status, {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		})
+			})
 	}
 
 	const onSaveAndAdd = async (data) => {
 		const members = await data.members;
 		const newmembers = await members.split(',');
-		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
-		.then(res => {
-			// console.log(res);
-			if (res.status===200) {
-				console.log("toast now");
-				toast.success('Successfully created!', {
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, { grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId') }, { withCredentials: true })
+			.then(res => {
+				if (res.status === 200) {
+					toast.success('Successfully created!', {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+					});
+					reset();
+				}
+			}).catch(err => {
+				toast.error(err.response.data.status, {
 					position: "top-right",
 					autoClose: 5000,
 					hideProgressBar: false,
@@ -66,20 +72,7 @@ const NewCollection = () => {
 					draggable: true,
 					progress: undefined,
 				});
-				reset();
-			}
-		}).catch(err=> {
-			console.log(err);
-			toast.error(err.response.data.status, {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		})
+			})
 	}
 
 	const onClearDelete = () => {
@@ -107,7 +100,7 @@ const NewCollection = () => {
 						name="grpName"
 						placeholder="Collection Name"
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
-						{...register('grpName', {required: true, maxLength: 50})}
+						{...register('grpName', { required: true, maxLength: 50 })}
 					></input>
 					{errors.grpName && errors.grpName.type === "required" && <span className=" text-pink text-xs italic">This field is required</span>}
 
@@ -131,7 +124,7 @@ const NewCollection = () => {
 						htmlFor="member"
 						className="sm:w-1/2 w-full place-self-center"
 					>
-						Enter UID
+						Enter your friend UID to invite them!(Need to have at least 1 member in your team excluding you)
 					</label>
 					<input
 						type="text"
@@ -141,56 +134,24 @@ const NewCollection = () => {
 						{...register('members')}
 					></input>
 
-					{/* next sample */}
-
-					{/* <ul className="sm:w-1/2 w-full place-self-center rounded-lg border border-gray-light bg-base-200">
-						<li className="inline-flex relative items-center py-2 px-4 w-full font-medium rounded-t-lg border-b border-gray-light">
-							<span>Members</span>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
+					<div className="flex flex-row place-self-center space-x-2">
+						<button
+							className="btn btn-outline btn-primary mt-6"
+							onClick={handleSubmit(onSubmitNewGroup)}
 						>
-							<span>Yippee</span>{" "}
-							<em className="text-sm text-primary">Owner</em>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
-						>
-							<span>YippeYaya</span>
-							<FaTrash />
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light rounded-b-lg "
-						>
-							<span>Yippyyyy</span>
-							<FaTrash />
-						</li>
-					</ul> */}
+							Save & go to List
+						</button>
 
-					{/* buttons group */}
+						<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onSaveAndAdd)}>
+							Save & Add another
+						</button>
 
-					
-						<div className="flex flex-row place-self-center space-x-2">
-							<button
-								className="btn btn-outline btn-primary mt-6"
-								onClick={handleSubmit(onSubmitNewGroup)}
-							>
-								Save & go to List
-							</button>
 
-							<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onSaveAndAdd)}>
-								Save & Add another
-							</button>
-						
+						<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onClearDelete)}>
+							Clear/ Delete
+						</button>
+					</div>
 
-							<button className="btn btn-outline btn-primary mt-6" onClick={handleSubmit(onClearDelete)}>
-								Clear/ Delete
-							</button>
-						</div>
-					
 
 					<div className="w-6/12 sm:w-4/12 px-4 place-self-center">
 						<img

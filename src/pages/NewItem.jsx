@@ -12,7 +12,7 @@ const NewItem = () => {
 	let navigate = useNavigate();
 
 	const getCollecitons = async () => {
-		await axios.get(`http://localhost:5000/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
 			.then(res => {
 				setlistCollections(res.data.data)
 			})
@@ -23,8 +23,6 @@ const NewItem = () => {
 		getCollecitons()
 	}, []);
 
-	console.log(listCollections)
-
 	const options = listCollections.map((data, index) => {
 		return <option key={index} value={data._id} >{data.grpName}</option>
 	})
@@ -34,7 +32,7 @@ const NewItem = () => {
 	}
 
 	const onCreate = async (data) => {
-		await axios.post(`http://localhost:5000/api/v1/items/`, {
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items/`, {
 			name: data.name,
 			brand: data.brand,
 			expiryDate: data.expiryDate,
@@ -75,7 +73,7 @@ const NewItem = () => {
 	}
 
 	const onAddAnother = async (data) => {
-		await axios.post(`http://localhost:5000/api/v1/items/`, {
+		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items/`, {
 			name: data.name,
 			brand: data.brand,
 			expiryDate: data.expiryDate,

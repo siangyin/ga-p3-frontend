@@ -5,7 +5,6 @@ import SglCard from "./SglCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const AllResults = (props) => {
-	console.log(props.grpID)
 	const [getUserItems, setgetUserItems] = useState([]);
 	const [getMemberItems, setgetMemberItems] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
@@ -15,14 +14,14 @@ const AllResults = (props) => {
 
 
 	const getItems = async () => {
-		await axios.get(`http://localhost:5000/api/v1/items?sort=&fields=&valueFilter=${props.searchedInStockQuery}&createdby=${localStorage.getItem('userId')}&grpID=${props.searchedCollectionsQuery}&fav=${props.searchedFavouriteQuery}&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}&expiryDate=${props.searchedExpiryDate}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items?sort=&fields=&valueFilter=${props.searchedInStockQuery}&createdby=${localStorage.getItem('userId')}&grpID=${props.searchedCollectionsQuery}&fav=${props.searchedFavouriteQuery}&name=${props.searchedItemQuery}&brand=${props.searchedBrandQuery}&expiryDate=${props.searchedExpiryDate}`, { withCredentials: true })
 			.then(res => {
 				setgetUserItems(res.data.data)
 			})
 	}
 
 	const getGroupItems = async () => {
-		await axios.get(`http://localhost:5000/api/v1/items?grpID=${props.grpID}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items?grpID=${props.grpID}`, { withCredentials: true })
 			.then(res => {
 				setgetMemberItems(res.data.data)
 			})
@@ -52,19 +51,19 @@ const AllResults = (props) => {
 	}
 
 	return (
-		
+
 		<article className="flex flex-col">
-				<div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-					<p className="text-sm text-gray-700">
-						Showing
-						<span className="font-medium"> {props.Result === "itemData" ? currentPageData.length : MemberPageData.length}  </span>
-						to
-						<span className="font-medium"> {PER_PAGE} </span>
-						of
-						<span className="font-medium"> {pageCount} </span>
-						results
-					</p>
-				</div>
+			<div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+				<p className="text-sm text-gray-700">
+					Showing
+					<span className="font-medium"> {props.Result === "itemData" ? currentPageData.length : MemberPageData.length}  </span>
+					to
+					<span className="font-medium"> {PER_PAGE} </span>
+					of
+					<span className="font-medium"> {pageCount} </span>
+					results
+				</p>
+			</div>
 			<div className="flex justify-end " >
 				<ReactPaginate
 					nextLabel={<FaChevronRight />}

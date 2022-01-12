@@ -26,5 +26,6 @@ export default function Home() {
 			</div>
 			<AccountForm />
 		</div>
+
 	);
 }

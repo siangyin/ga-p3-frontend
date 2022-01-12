@@ -48,14 +48,14 @@ const FilterMenu = (props) => {
 	}
 
 	const getCollecitons = async () => {
-		await axios.get(`http://localhost:5000/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
 			.then(res => {
 				setlistCollections(res.data.data)
 			})
 	}
 
 	const getCollecitonsMember = async () => {
-		await axios.get(`http://localhost:5000/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
 			.then(res => {
 				setlistMemberCollections(res.data.data)
 
@@ -86,6 +86,7 @@ const FilterMenu = (props) => {
 		if (data.ownerID !== localStorage.getItem('userId')) {
 			return <Link to={`/items/${data.grpName}`} state={{ grpID: data._id, grpName: data.grpName }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
 		}
+		return true
 	})
 
 

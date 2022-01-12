@@ -14,14 +14,14 @@ const EditItem = () => {
     let location = useLocation()
 
     const getCollecitons = async () => {
-        await axios.get(`http://localhost:5000/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
+        await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
             .then(res => {
                 setlistCollections(res.data.data)
             })
     }
 
     const getSelectedItemData = async () => {
-        await axios.get(`http://localhost:5000/api/v1/items/${location.state.itemsID}`, { withCredentials: true })
+        await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items/${location.state.itemsID}`, { withCredentials: true })
             .then(res => {
                 setItemDetails(res.data.data)
                 reset({ keepDirty: true })
@@ -45,7 +45,7 @@ const EditItem = () => {
     }
 
     const onCreate = async (data) => {
-        await axios.patch(`http://localhost:5000/api/v1/items/${location.state.itemsID}`, {
+        await axios.patch(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items/${location.state.itemsID}`, {
             name: data.name,
             brand: data.brand,
             expiryDate: data.expiryDate,
@@ -98,80 +98,80 @@ const EditItem = () => {
                         src={getItemDetails.imgUrl}
                         alt="item"
                         className="object-center object-cover"
-                        width= '500'
+                        width='500'
                     ></img>
                 </div>
-            <form className="form-control flex flex-wrap mt-6" onSubmit={e => e.preventDefault()}>
-                <input
-                    type="text"
-                    defaultValue={getItemDetails.name}
-                    className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
-                    {...register('name', { required: true, })}
+                <form className="form-control flex flex-wrap mt-6" onSubmit={e => e.preventDefault()}>
+                    <input
+                        type="text"
+                        defaultValue={getItemDetails.name}
+                        className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+                        {...register('name', { required: true, })}
 
-                ></input>
+                    ></input>
 
-                <input
-                    type="text"
-                    defaultValue={getItemDetails.brand}
-                    className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
-                    {...register('brand', { required: true })}
-                ></input>
+                    <input
+                        type="text"
+                        defaultValue={getItemDetails.brand}
+                        className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+                        {...register('brand', { required: true })}
+                    ></input>
 
-                <input
-                    type="date"
-                    defaultValue={expiryDate}
-                    className="input input-bordered mb-3  sm:w-1/2 w-full  place-self-center"
-                    {...register('expiryDate', { required: true })}
-                ></input>
+                    <input
+                        type="date"
+                        defaultValue={expiryDate}
+                        className="input input-bordered mb-3  sm:w-1/2 w-full  place-self-center"
+                        {...register('expiryDate', { required: true })}
+                    ></input>
 
-                <input
-                    type="number"
-                    id="quantity"
-                    defaultValue={getItemDetails.qty}
-                    min="0"
-                    className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
-                    {...register('qty')}
-                ></input>
+                    <input
+                        type="number"
+                        id="quantity"
+                        defaultValue={getItemDetails.qty}
+                        min="0"
+                        className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+                        {...register('qty')}
+                    ></input>
 
-                <select
-                    className="select select-bordered mb-3 sm:w-1/2 w-full place-self-center"
-                    name="grpName" value={selectedCollection} onChange={handleChange} defaultValue="Collection"
-                >
-                    <option disabled="disabled" value="Collection">
-                        Select Collection
-                    </option>
-                    {options}
-                </select>
+                    <select
+                        className="select select-bordered mb-3 sm:w-1/2 w-full place-self-center"
+                        name="grpName" value={selectedCollection} onChange={handleChange} defaultValue="Collection"
+                    >
+                        <option disabled="disabled" value="Collection">
+                            Select Collection
+                        </option>
+                        {options}
+                    </select>
 
-                <input
-                    type="text"
-                    placeholder="Product Image URL"
-                    defaultValue={getItemDetails.imgUrl}
-                    className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
-                    {...register('imgUrl')}
-                ></input>
+                    <input
+                        type="text"
+                        placeholder="Product Image URL"
+                        defaultValue={getItemDetails.imgUrl}
+                        className="input input-bordered mb-3  sm:w-1/2 w-full place-self-center"
+                        {...register('imgUrl')}
+                    ></input>
 
-                <div className="p-6 place-self-center">
-                    <div className="form-control">
-                        <label className="cursor-pointer label">
-                            <span className="label-text mr-5">Add to Favourite List</span>
-                            <input
-                                type="checkbox"
-                                className="toggle"
-                                defaultChecked={getItemDetails.fav}
-                                {...register('fav')}
-                            ></input>
-                        </label>
+                    <div className="p-6 place-self-center">
+                        <div className="form-control">
+                            <label className="cursor-pointer label">
+                                <span className="label-text mr-5">Add to Favourite List</span>
+                                <input
+                                    type="checkbox"
+                                    className="toggle"
+                                    defaultChecked={getItemDetails.fav}
+                                    {...register('fav')}
+                                ></input>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div className="flex flex-row place-self-center space-x-4">
-                    <button className="btn btn-outline btn-primary" onClick={handleSubmit(onCreate)}>
-                        Save & go to List
-                    </button>
-                </div>
-            </form>
-        </div>
+                    <div className="flex flex-row place-self-center space-x-4">
+                        <button className="btn btn-outline btn-primary" onClick={handleSubmit(onCreate)}>
+                            Save & go to List
+                        </button>
+                    </div>
+                </form>
+            </div>
         </>
     );
 };
