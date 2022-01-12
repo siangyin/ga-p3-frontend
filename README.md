@@ -9,7 +9,7 @@
 
 ## 🌼 Introduction
 
-The average family of four wastes 25% of their food each year. Our Online pantry manager help user to manage the list of item in your kitchen aiming for less wastage, save money, share food.  
+The average family of four wastes 25% of their food each year. Share your kitchen leh, is an online pantry manager which help user to manage the list of item in your kitchen aiming for less wastage, cost-saving by sharing food.  
 
 
 
