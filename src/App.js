@@ -15,6 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ResetPassword from "./components/ResetPassword";
 import EditItem from "./pages/EditItem";
 import MembersItem from "./pages/MembersItem";
+import EditCollections from "./pages/EditCollections";
+import MembersCollection from "./pages/MembersCollection";
 
 function App() {
 	const userSession = useContext(AuthContext);
@@ -55,8 +57,9 @@ function App() {
 						<Route path="/items/edit" element={<EditItem />} />
 						<Route path="/items/*" element={<MembersItem />} />
 						<Route path="/collections" element={<Collections />} />
-						<Route path="/collections/:id" element={<NewCollection />} />
 						<Route path="/collections/new" element={<NewCollection />} />
+						<Route path="/collections/edit" element={<EditCollections /> }/>
+						<Route path="/collections/*" element={<MembersCollection /> }/>
 						<Route path="/logout" element={<Home />} />
 						<Route path="*" element={<Navigate to="/" />} />
 					</>

@@ -1,4 +1,4 @@
-import AllResults from "../components/AllResults";
+import CollectionsResults from "../components/CollectionsResults";
 import CollectionsSideBar from "../components/CollectionsSideBar";
 import SubHeader from "../components/SubHeader";
 
@@ -8,7 +8,7 @@ export default function Collections() {
 			<SubHeader title="collection"/>
 			<div className="flex flex-row">
 				<CollectionsSideBar />
-				<AllResults Result="groupData"/>
+				<CollectionsResults Result="CollectionData"/>
 			</div>
 		</>
 	);

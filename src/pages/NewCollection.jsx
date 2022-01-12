@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import SubHeader from "../components/SubHeader";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -50,6 +48,8 @@ const NewCollection = () => {
 	}
 
 	const onSaveAndAdd = async (data) => {
+		const members = await data.members;
+		const newmembers = await members.split(',');
 		await axios.post(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups`, {grpName: data.grpName, imgUrl: data.imgUrl, members: newmembers, ownerID: localStorage.getItem('userId')}, {withCredentials: true})
 		.then(res => {
 			// console.log(res);
@@ -129,7 +129,7 @@ const NewCollection = () => {
 						htmlFor="member"
 						className="sm:w-1/2 w-full place-self-center"
 					>
-						Enter UID
+						Enter your friend UID to invite them!(Need to have at least 1 member in your team excluding you)
 					</label>
 					<input
 						type="text"
@@ -138,38 +138,6 @@ const NewCollection = () => {
 						className="sm:w-1/2 w-full place-self-center input input-bordered"
 						{...register('members')}
 					></input>
-
-					{/* next sample */}
-
-					{/* <ul className="sm:w-1/2 w-full place-self-center rounded-lg border border-gray-light bg-base-200">
-						<li className="inline-flex relative items-center py-2 px-4 w-full font-medium rounded-t-lg border-b border-gray-light">
-							<span>Members</span>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
-						>
-							<span>Yippee</span>{" "}
-							<em className="text-sm text-primary">Owner</em>
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light"
-						>
-							<span>YippeYaya</span>
-							<FaTrash />
-						</li>
-						<li
-							type="button"
-							className="flex justify-between relative items-center py-2 px-4 w-full font-small border-b border-gray-light rounded-b-lg "
-						>
-							<span>Yippyyyy</span>
-							<FaTrash />
-						</li>
-					</ul> */}
-
-					{/* buttons group */}
-
 					
 						<div className="flex flex-row place-self-center space-x-2">
 							<button
