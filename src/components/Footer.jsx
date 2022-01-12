@@ -1,8 +1,7 @@
-export default function Footer()
-{
-    return(
-        <div className="text-center">
-            Share Your Kitchen Leh © 2022
-        </div>
-    );
+export default function Footer() {
+	return (
+		<div className="text-center absolute inset-x-0 bottom-0 m-2">
+			Share Your Kitchen Leh © 2022
+		</div>
+	);
 }
