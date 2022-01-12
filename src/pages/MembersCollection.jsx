@@ -17,7 +17,8 @@ export default function MembersCollection() {
                     friendsgrpName={location.state.friendsgrpName}
                     friendsMembers={location.state.friendsMembers}
                     friendsimgURL={location.state.friendsimgURL}
-                    friendsOwnerID={location.state.ownerID} />
+                    friendsOwnerID={location.state.ownerID} 
+                    friendsGroupID={location.state.groupID}/>
             </div>
         </>
     );

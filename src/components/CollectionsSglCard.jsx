@@ -3,12 +3,27 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from "axios";
+import { useEffect, useState } from "react";
 const Swal = require('sweetalert2')
 
 const CollectionsSglCard = (props) => {
 	const checkProp = (props.data === "CollectionMemberDetails")
 	let navigate = useNavigate();
 	const compareMembers = props.members.filter(member => member !== props.ownerID)
+	const [getItemsNumber, setgetItemsNumber] = useState("");
+
+	const getItemsResult = async () => {
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items?grpID=${props.grpID}`, { withCredentials: true })
+			.then(res => {
+				if (res.status === 200) {
+					setgetItemsNumber(res.data.data.length)
+				}
+			})
+	}
+
+	useEffect(() => {
+		getItemsResult()
+	}, []);
 
 	const handleCollectionsDelete = async () => {
 		await Swal.fire({
@@ -67,7 +82,7 @@ const CollectionsSglCard = (props) => {
 			/>
 			<div class="px-6 py-4">
 				<div class="font-bold text-xl mb-2">{props.GroupName}</div>
-				<p>{props.numMembers} members</p>
+				<p>{props.numMembers} members / {getItemsNumber} item</p>
 			</div>
 			{checkProp ? ""
 				: <div className="flex flex-row">
