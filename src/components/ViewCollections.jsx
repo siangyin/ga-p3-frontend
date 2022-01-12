@@ -9,18 +9,18 @@ const ViewCollections = (props) => {
 
     const [getItemsNumber, setgetItemsNumber] = useState("");
 
-	const getItemsResult = async () => {
-		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items?grpID=${props.friendsGroupID}`, { withCredentials: true })
-			.then(res => {
-				if (res.status === 200) {
-					setgetItemsNumber(res.data.data.length)
-				}
-			})
-	}
+    const getItemsResult = async () => {
+        await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items?grpID=${props.friendsGroupID}`, { withCredentials: true })
+            .then(res => {
+                if (res.status === 200) {
+                    setgetItemsNumber(res.data.data.length)
+                }
+            })
+    }
 
-	useEffect(() => {
-		getItemsResult()
-	}, []);
+    useEffect(() => {
+        getItemsResult()
+    }, []);
 
     console.log(getItemsNumber)
 
@@ -92,14 +92,14 @@ const ViewCollections = (props) => {
                     ></input>
 
                     <div className="flex flex-row place-self-center space-x-2">
-                       <Link to ="/collections"> <button
+                        <Link to="/collections"> <button
                             className="btn btn-outline btn-primary mt-6"
                         >
                             Back
                         </button></Link>
                     </div>
 
-                    
+
 
 
                     <div className="w-6/12 sm:w-4/12 px-4 place-self-center">

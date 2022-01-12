@@ -29,7 +29,7 @@ const CollectionsSideBar = (props) => {
 		return true
 	})
 
-	
+
 	const onSearchCollectionQuery = (data) => {
 
 		props.handleCollectionSearch(data.searchQuery)
@@ -45,7 +45,7 @@ const CollectionsSideBar = (props) => {
 					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
 					{...register('searchQuery')}
 				></input>
-				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey"  onClick={handleSubmit(onSearchCollectionQuery)}>
+				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey" onClick={handleSubmit(onSearchCollectionQuery)}>
 					<FaSearch />
 				</button>
 			</form>

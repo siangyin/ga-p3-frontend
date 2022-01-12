@@ -15,7 +15,7 @@ export default function ResetPassword() {
     useEffect(() => {
         try {
             axios
-                .get(`${process.env.REACT_APP_DEV_BACKEND_URL}/checktoken/${token}`,{withCredentials: true})
+                .get(`${process.env.REACT_APP_DEV_BACKEND_URL}/checktoken/${token}`, { withCredentials: true })
                 .then((res) => {
                     if (res.data.message === "Valid token") {
                         setValid(true);

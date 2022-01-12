@@ -14,8 +14,8 @@ export default function Collections() {
 		<>
 			<SubHeader title="collection" />
 			<div className="flex flex-row">
-				<CollectionsSideBar handleCollectionSearch={handleCollectionSearch}/>
-				<CollectionsResults searchedCollectionsQuery={searchedCollectionsQuery}/>
+				<CollectionsSideBar handleCollectionSearch={handleCollectionSearch} />
+				<CollectionsResults searchedCollectionsQuery={searchedCollectionsQuery} />
 			</div>
 		</>
 	);
