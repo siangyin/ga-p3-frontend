@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -19,27 +19,6 @@ import MembersItem from "./pages/MembersItem";
 function App() {
 	const userSession = useContext(AuthContext);
 	console.log(userSession);
-
-
-	// const [currentUser, setCurrentUser] = useState();
-	// username: userSession;
-
-	// useEffect(() => {
-	// 	const getUser = async () => {
-	// 		try {
-	// 			await userSession.username;
-	// 			const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
-	// 			const res = await axios.get(url);
-	// 			setCurrentUser(res.data);
-	// 			console.log(currentUser);
-	// 		} catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 	};
-
-	// 	getUser();
-	// }, []);
-
 
 	return (
 		<div className="App">
