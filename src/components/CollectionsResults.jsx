@@ -7,7 +7,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 
 
-const CollectionsResults = () => {
+const CollectionsResults = (props) => {
 
     const [getUserGroup, setgetUserGroup] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
@@ -16,7 +16,7 @@ const CollectionsResults = () => {
     const pageCount = Math.ceil(getUserGroup.length / PER_PAGE);
 
     const getGroups = async () => {
-        await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
+        await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?search=${props.searchedCollectionsQuery}&ownerID=${localStorage.getItem('userId')}`, { withCredentials: true })
             .then(res => {
                 setgetUserGroup(res.data.data)
             })
@@ -30,7 +30,7 @@ const CollectionsResults = () => {
     useEffect(() => {
         getGroups()
 
-    }, []);
+    }, [props.searchedCollectionsQuery]);
 
     const getGroupsResult = getUserGroup.slice(offset, offset + PER_PAGE).map((data, index) => {
         return <CollectionsSglCard GroupName={data.grpName} imgUrl={data.imgUrl} numMembers={data.members.length} grpID={data._id} members={data.members} ownerID={data.ownerID} key={index} />

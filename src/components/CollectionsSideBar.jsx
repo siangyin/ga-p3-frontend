@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form"
 import axios from "axios";
 
-const CollectionsSideBar = () => {
+const CollectionsSideBar = (props) => {
 	const [listMemberCollections, setlistMemberCollections] = useState([]);
+	const { register, handleSubmit, reset } = useForm()
 
 
 	const getCollecitonsMember = async () => {
@@ -20,11 +22,19 @@ const CollectionsSideBar = () => {
 	}, []);
 
 	const listFriendsCollections = listMemberCollections.map((data, index) => {
+		console.log(data)
 		if (data.ownerID !== localStorage.getItem('userId')) {
-			return <Link to={`/collections/${data.grpName}`} state={{ friendsNumMembers: data.members.length, friendsgrpName: data.grpName, friendsMembers: data.members, friendsimgURL: data.imgUrl, ownerID: data.ownerID }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
+			return <Link to={`/collections/${data.grpName}`} state={{ friendsNumMembers: data.members.length, friendsgrpName: data.grpName, friendsMembers: data.members, friendsimgURL: data.imgUrl, ownerID: data.ownerID, groupID: data._id }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
 		}
 		return true
 	})
+
+
+	const onSearchCollectionQuery = (data) => {
+
+		props.handleCollectionSearch(data.searchQuery)
+		reset({ searchQuery: "" })
+	}
 
 	return (
 		<aside className="flex flex-col space-y-6 m-5">
@@ -33,8 +43,9 @@ const CollectionsSideBar = () => {
 					type="text"
 					placeholder="Search Collections"
 					className="w-full input input-bordered bg-base-200 focus:border-primary-500 focus:bg-white"
+					{...register('searchQuery')}
 				></input>
-				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey">
+				<button className="absolute top-0 right-0 rounded-l-none btn btn-grey" onClick={handleSubmit(onSearchCollectionQuery)}>
 					<FaSearch />
 				</button>
 			</form>
