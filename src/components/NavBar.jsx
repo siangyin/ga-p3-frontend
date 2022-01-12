@@ -6,13 +6,28 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NavBar() {
 	const userSession = useContext(AuthContext);
 	let navigate = useNavigate();
 	const [showLinks, setShowLinks] = useState(true);
-	console.log(showLinks);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+	const updateWidth = () => {
+		setWindowWidth(window.innerWidth);
+		if (window.innerWidth > 640) {
+			setShowLinks(true);
+		} else {
+			setShowLinks(false);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener("resize", updateWidth);
+		return () => window.removeEventListener("resize", updateWidth);
+	}, [windowWidth]);
+
 	const onLogout = async () => {
 		try {
 			await axios
@@ -42,7 +57,7 @@ export default function NavBar() {
 	if (userSession) {
 		return (
 			<nav className="flex flex-wrap items-center justify-between p-6">
-				<div className="flex items-center flex-shrink-0 mr-8">
+				<div className="flex items-center flex-shrink-0 mr-8 mb-2">
 					<Link to="/">
 						<img src={logo} alt="logo" width="200px"></img>
 					</Link>
@@ -62,10 +77,7 @@ export default function NavBar() {
 						<button className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary mr-5">
 							<Link to="items">Items</Link>
 						</button>
-						<button
-							href="#responsive-header"
-							className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary mr-5"
-						>
+						<button className="block sm:inline-block sm:mt-0 text-2xl  hover:text-primary mr-5">
 							<Link to="collections">Collections</Link>
 						</button>
 						<button
@@ -80,7 +92,7 @@ export default function NavBar() {
 		);
 	}
 	return (
-		<nav className="flex flex-wrap items-center justify-between p-6">
+		<nav className="flex flex-wrap items-center justify-between p-1">
 			<div className="flex items-center flex-shrink-0 mr-8">
 				<Link to="/">
 					<img src={logo} alt="logo" width="200px"></img>
