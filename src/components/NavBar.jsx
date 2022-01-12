@@ -56,7 +56,7 @@ export default function NavBar() {
 
 	if (userSession) {
 		return (
-			<nav className="flex flex-wrap items-center justify-between p-6">
+			<nav className="flex flex-wrap items-center justify-between p-6 shadow-md">
 				<div className="flex items-center flex-shrink-0 mr-8 mb-2">
 					<Link to="/">
 						<img src={logo} alt="logo" width="200px"></img>
@@ -92,7 +92,7 @@ export default function NavBar() {
 		);
 	}
 	return (
-		<nav className="flex flex-wrap items-center justify-between p-6">
+		<nav className="flex flex-wrap items-center justify-between p-6 shadow-md">
 			<div className="flex items-center flex-shrink-0 mr-8">
 				<Link to="/">
 					<img src={logo} alt="logo" width="200px"></img>

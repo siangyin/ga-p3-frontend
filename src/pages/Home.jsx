@@ -4,9 +4,9 @@ import AccountForm from "../components/AccountForm";
 
 export default function Home() {
 	return (
-		<div className="hero bg-base-200 flex flex-wrap justify-center sm:p-20">
+		<div className="hero flex flex-wrap justify-center container sm:mt-20">
 			<div className="flex-col justify-center hero-content lg:flex-row md:w-1/2">
-				<div className="place-items-center">
+				<div className="place-items-center p-5">
 					<img
 						src={photo}
 						alt="woman-photos"
@@ -14,9 +14,11 @@ export default function Home() {
 					></img>
 
 					<div className="max-w-md">
-						<h1 className="text-4xl font-bold">Share your kitchen leh!</h1>
-						<p className="mb-5">
-							Manage your pantry inventory & track food expiry. Eat smarter.
+						<h1 className="md:text-3xl sm:text-4xl text-2xl font-bold">
+							Share your kitchen leh!
+						</h1>
+						<p className="mb-5 sm:text-xl md:text-lg text-base">
+							Manage your pantry inventory & track food expiry. Eat smarter:
 							Save money. Waste less.
 						</p>
 					</div>
