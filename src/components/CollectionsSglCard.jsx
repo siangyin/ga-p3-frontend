@@ -6,17 +6,9 @@ import axios from "axios";
 const Swal = require('sweetalert2')
 
 const CollectionsSglCard = (props) => {
-	console.log(props.grpID)
 	const checkProp = (props.data === "CollectionMemberDetails")
 	let navigate = useNavigate();
 	const compareMembers = props.members.filter(member => member !== props.ownerID)
-
-
-
-	let mapMembersID = props.members.map((data,index) =>
-		{
-			return <p>{data}</p>
-		})
 
 	const handleCollectionsDelete = async () => {
 		await Swal.fire({
@@ -74,23 +66,19 @@ const CollectionsSglCard = (props) => {
 				height="500"
 			/>
 			<div class="px-6 py-4">
-				<div class="font-bold text-xl mb-2">{props.GroupName }</div>
-				<p class="text-gray-700 text-base">{} </p>
+				<div class="font-bold text-xl mb-2">{props.GroupName}</div>
 				<p>{props.numMembers} members</p>
-				<div class="font-bold text-xl mb-2">Members</div>
-				{mapMembersID}
-
 			</div>
-			{checkProp? "" 
-			: <div className="flex flex-row">
-				<Link to="/collections/edit" state={{ GroupsID: props.grpID, Members: compareMembers, ownerID: props.ownerID }}><button className="btn btn-ghost btn-square">
-					<FaPen />
-				</button></Link>
-				<button className="btn btn-ghost btn-square" onClick={handleCollectionsDelete}>
-					<FaTrash />
-				</button>
-			</div>}
-			
+			{checkProp ? ""
+				: <div className="flex flex-row">
+					<Link to="/collections/edit" state={{ GroupsID: props.grpID, Members: compareMembers, ownerID: props.ownerID }}><button className="btn btn-ghost btn-square">
+						<FaPen />
+					</button></Link>
+					<button className="btn btn-ghost btn-square" onClick={handleCollectionsDelete}>
+						<FaTrash />
+					</button>
+				</div>}
+
 
 		</div>
 	)

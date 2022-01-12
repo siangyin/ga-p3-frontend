@@ -5,10 +5,10 @@ import SubHeader from "../components/SubHeader";
 export default function Collections() {
 	return (
 		<>
-			<SubHeader title="collection"/>
+			<SubHeader title="collection" />
 			<div className="flex flex-row">
 				<CollectionsSideBar />
-				<CollectionsResults Result="CollectionData"/>
+				<CollectionsResults />
 			</div>
 		</>
 	);

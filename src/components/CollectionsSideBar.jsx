@@ -8,10 +8,9 @@ const CollectionsSideBar = () => {
 
 
 	const getCollecitonsMember = async () => {
-		await axios.get(`http://localhost:5000/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
+		await axios.get(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/groups?members=${localStorage.getItem('userId')}`, { withCredentials: true })
 			.then(res => {
 				setlistMemberCollections(res.data.data)
-
 			})
 	}
 
@@ -21,9 +20,8 @@ const CollectionsSideBar = () => {
 	}, []);
 
 	const listFriendsCollections = listMemberCollections.map((data, index) => {
-		console.log(data)
 		if (data.ownerID !== localStorage.getItem('userId')) {
-			return <Link to={`/collections/${data.grpName}`} state={{ friendsNumMembers: data.members.length, friendsgrpName: data.grpName, friendsMembers: data.members, friendsimgURL: data.imgUrl }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
+			return <Link to={`/collections/${data.grpName}`} state={{ friendsNumMembers: data.members.length, friendsgrpName: data.grpName, friendsMembers: data.members, friendsimgURL: data.imgUrl, ownerID: data.ownerID }} ><button className="block sm:inline-block sm:mt-0 text-s  hover:text-primary mr-5" key={index}>{data.grpName}</button></Link>
 		}
 		return true
 	})

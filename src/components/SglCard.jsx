@@ -21,7 +21,7 @@ const SglCard = (props) => {
 			denyButtonText: 'No',
 		}).then(async (result) => {
 			if (result.isConfirmed) {
-				await axios.delete(`http://localhost:5000/api/v1/items/${props.id}`, { withCredentials: true })
+				await axios.delete(`${process.env.REACT_APP_DEV_BACKEND_URL}/api/v1/items/${props.id}`, { withCredentials: true })
 					.then(res => {
 						if (res.status === 200) {
 							Swal.fire({

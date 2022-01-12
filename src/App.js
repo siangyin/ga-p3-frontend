@@ -8,8 +8,6 @@ import NewCollection from "./pages/NewCollection";
 import NewItem from "./pages/NewItem";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-// import { APIurl } from "./helper/API";
-// import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResetPassword from "./components/ResetPassword";
@@ -20,28 +18,6 @@ import MembersCollection from "./pages/MembersCollection";
 
 function App() {
 	const userSession = useContext(AuthContext);
-	console.log(userSession);
-
-
-	// const [currentUser, setCurrentUser] = useState();
-	// username: userSession;
-
-	// useEffect(() => {
-	// 	const getUser = async () => {
-	// 		try {
-	// 			await userSession.username;
-	// 			const url = `https://sykl-api.herokuapp.com/api/v1/members?search=${userSession.username}`;
-	// 			const res = await axios.get(url);
-	// 			setCurrentUser(res.data);
-	// 			console.log(currentUser);
-	// 		} catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 	};
-
-	// 	getUser();
-	// }, []);
-
 
 	return (
 		<div className="App">
@@ -58,8 +34,8 @@ function App() {
 						<Route path="/items/*" element={<MembersItem />} />
 						<Route path="/collections" element={<Collections />} />
 						<Route path="/collections/new" element={<NewCollection />} />
-						<Route path="/collections/edit" element={<EditCollections /> }/>
-						<Route path="/collections/*" element={<MembersCollection /> }/>
+						<Route path="/collections/edit" element={<EditCollections />} />
+						<Route path="/collections/*" element={<MembersCollection />} />
 						<Route path="/logout" element={<Home />} />
 						<Route path="*" element={<Navigate to="/" />} />
 					</>
