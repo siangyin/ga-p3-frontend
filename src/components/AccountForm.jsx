@@ -177,7 +177,17 @@ export default function AccountForm() {
 		<div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
 			<div className="card-body">
 				{userSession ? (
-					`Welcome ${userSession.username} UID(${userSession._id})`
+					<div>
+						<h1 className="text-2xl">
+							Welcome{" "}
+							<strong className="font-extrabold text-primary">
+								{userSession.username}
+							</strong>
+						</h1>
+						<p>
+							User ID: <span>{userSession._id}</span>
+						</p>
+					</div>
 				) : (
 					<form onSubmit={(e) => e.preventDefault()}>
 						<div className="form-control">
@@ -232,15 +242,15 @@ export default function AccountForm() {
 								Forgot password?
 							</a>
 						</p>
-						<div className="flex flex-row place-self-center justify-center space-x-4 w-full">
+						<div className="flex flex-row place-self-center justify-center space-x-4 m-2">
 							<button
-								className="btn hover:btn-primary"
+								className="w-1/2 btn hover:btn-primary"
 								onClick={handleSubmit(onSubmitLogin)}
 							>
 								Login
 							</button>
 							<button
-								className="btn hover:btn-primary"
+								className="w-1/2 btn hover:btn-primary"
 								onClick={handleSubmit(onRegisterLogin)}
 							>
 								Register
