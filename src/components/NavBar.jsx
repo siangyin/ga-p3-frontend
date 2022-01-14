@@ -31,7 +31,9 @@ export default function NavBar() {
 	const onLogout = async () => {
 		try {
 			await axios
-				.delete(`${process.env.REACT_APP_DEV_BACKEND_URL}/logout`, { withCredentials: true })
+				.delete(`${process.env.REACT_APP_DEV_BACKEND_URL}/logout`, {
+					withCredentials: true,
+				})
 				.then((res) => {
 					if (res.status === 200) {
 						console.log(res.data);
@@ -62,7 +64,7 @@ export default function NavBar() {
 		}
 	};
 
-	if (userSession) {
+	if (userSession.username) {
 		return (
 			<nav className="flex flex-wrap items-center justify-between p-6 shadow-md">
 				<div className="flex items-center flex-shrink-0 mr-8 mb-2">
