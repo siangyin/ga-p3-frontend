@@ -176,7 +176,7 @@ export default function AccountForm() {
 	return (
 		<div className="card flex-shrink-0 w-full max-w-sm justify-center shadow-2xl bg-base-100 md:w-1/2">
 			<div className="card-body">
-				{userSession ? (
+				{userSession.username ? (
 					<div>
 						<h1 className="text-2xl">
 							Welcome{" "}
