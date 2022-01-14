@@ -233,20 +233,17 @@ Item > Create Group
 
 ## ⚙️ Challenges
 
-⓵ Ettc
+Team communication
+- Having trouble in syncing up code base at the start of the project/ problems in communicating with team.
+- We sync up our code base by having a call and make sure that everyone of us are coding on the same code base. Communication broke down but we talk it out during meetings
 
-- what/why
-- how
+Coding challanges
+- Had difficulty using Passport and Learning about sessions.
+- Solve by researching more and asking TA about it.
 
-⓶ Ettc
-
-- what/why
-- how
-
-⓷ Ettc
-
-- what/why
-- how
+Project management
+- Faced challenges when delegates task, who to do, when to do, what to do.
+- Schedule meeting and have regular catch-up session, always repeat and clarify to make sure everyone have the same understanding. Ask question and keep meeting minutes on what have been discussed, what's on pending, what's been finalised. 
 
 
 
